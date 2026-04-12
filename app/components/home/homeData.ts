@@ -28,7 +28,7 @@ export const FEATURE_CARS = [
     cat: "Sports",
     discount: "5% OFF",
     features: ["0-100 in 3.2s", "Sport Chrono", "Bucket Seats"],
-    img: "https://images.unsplash.com/photo-1503376713356-6520f69f2010?q=80&w=800&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=800&auto=format&fit=crop",
     color: "from-red-600/20 to-transparent",
   },
   {
