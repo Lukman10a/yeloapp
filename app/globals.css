@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-brand-yelo: #D4AF37;
+  --color-brand-yelo-hover: #C5A033;
+  --color-brand-yelo-glow: rgba(212, 175, 55, 0.15);
+  --color-brand-purple: #232528;
+  --color-brand-charcoal: #0B0C10;
+  --color-brand-offwhite: #FAFAFA;
+  --color-brand-navy: #1F2833;
+  --color-brand-gray: #9B9B9B;
+
+  --color-background: var(--color-brand-charcoal);
+  --color-foreground: #FAFAFA;
+}
+
+body {
+  @apply bg-white text-gray-900 dark:bg-brand-charcoal dark:text-gray-100;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism utilities */
+.glass-panel {
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 208, 0, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.gold-glow {
+  box-shadow: 0 0 20px rgba(255, 208, 0, 0.15);
+}
+
+.gold-text-glow {
+  text-shadow: 0 0 10px rgba(255, 208, 0, 0.4);
+}
+
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+}
