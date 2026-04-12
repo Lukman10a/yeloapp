@@ -7,16 +7,20 @@ type SafeImageProps = {
   src: string;
   alt: string;
   className?: string;
+  preload?: boolean;
   priority?: boolean;
   sizes?: string;
+  quality?: 50 | 60 | 75;
 };
 
 export default function SafeImage({
   src,
   alt,
   className,
+  preload = false,
   priority = false,
   sizes,
+  quality,
 }: SafeImageProps) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -31,9 +35,10 @@ export default function SafeImage({
         alt={alt}
         fill
         sizes={sizes}
+        quality={quality}
         className={`${className ?? ""} transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
-        priority={priority}
-        unoptimized
+        preload={preload || priority}
+        loading={preload || priority ? "eager" : "lazy"}
         onLoad={() => setLoaded(true)}
         onError={() => setFailed(true)}
       />

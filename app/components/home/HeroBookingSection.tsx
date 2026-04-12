@@ -28,7 +28,8 @@ export default function HeroBookingSection({
             alt="Luxury Background"
             sizes="100vw"
             className="object-cover object-center md:object-[center_70%] scale-105 animate-[kenburns_20s_ease-out_infinite_alternate]"
-            priority
+            preload
+            quality={60}
           />
           <div className="absolute inset-0 bg-black/50 z-10 dark:bg-brand-charcoal/70 transition-colors duration-700"></div>
           <div className="absolute inset-0 bg-linear-to-r from-brand-charcoal/90 via-brand-charcoal/60 to-transparent z-10 dark:from-brand-charcoal dark:via-brand-charcoal/80"></div>
@@ -89,7 +90,7 @@ export default function HeroBookingSection({
         </div>
       </section>
 
-      <section className="relative z-30 -mt-12 sm:-mt-16 md:-mt-24 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 mb-20 md:mb-32">
+      <section className="relative z-30 top-8 -mt-12 sm:-mt-16 md:-mt-24 max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 mb-20 md:mb-32">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

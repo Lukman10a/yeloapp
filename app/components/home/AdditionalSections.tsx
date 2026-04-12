@@ -101,6 +101,7 @@ export default function AdditionalSections() {
                   src={cat.img}
                   alt={cat.title}
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={50}
                   className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-gray-950/90 via-gray-950/30 to-transparent z-10 transition-opacity group-hover:opacity-80"></div>
@@ -140,6 +141,7 @@ export default function AdditionalSections() {
               src="https://images.unsplash.com/photo-1541443131876-44b03de101c5?q=80&w=1200&auto=format&fit=crop"
               alt="Interior"
               sizes="(max-width: 768px) 100vw, 66vw"
+              quality={60}
               className="object-cover object-right group-hover:scale-105 transition-transform duration-1000"
             />
             <div className="absolute inset-0 bg-linear-to-r from-gray-950/95 via-gray-950/70 to-transparent z-10"></div>

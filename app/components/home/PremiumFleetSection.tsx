@@ -57,6 +57,7 @@ export default function PremiumFleetSection() {
                 src={car.img}
                 alt={car.name}
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                quality={50}
                 className="object-cover object-center group-hover:scale-110 transition-transform duration-[1.5s] ease-out brightness-90 group-hover:brightness-100"
               />
             </div>
