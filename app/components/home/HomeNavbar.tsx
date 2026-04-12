@@ -119,7 +119,7 @@ export default function HomeNavbar({
                 </button>
               ))}
             </div>
-            <div className="mt-8 space-y-3">
+            {/* <div className="mt-8 space-y-3">
               <button
                 onClick={onToggleTheme}
                 className="w-full rounded-2xl bg-gray-900 text-white dark:bg-brand-yelo dark:text-black py-3 font-bold"
@@ -129,7 +129,7 @@ export default function HomeNavbar({
               <button className="w-full rounded-2xl border border-gray-300 dark:border-gray-700 py-3 font-bold text-gray-800 dark:text-gray-200">
                 Sign In
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       )}
