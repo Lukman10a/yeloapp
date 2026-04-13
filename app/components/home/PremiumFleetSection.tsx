@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, CheckCircle } from "lucide-react";
+import Link from "next/link";
 import SafeImage from "./SafeImage";
 import { FEATURE_CARS } from "./homeData";
 
@@ -29,13 +30,13 @@ export default function PremiumFleetSection() {
             excellence on their journey.
           </p>
         </div>
-        <button className="flex items-center gap-2 text-gray-900 dark:text-white font-bold text-base sm:text-lg hover:text-brand-yelo dark:hover:text-brand-yelo transition-colors group border-b-2 border-gray-900 dark:border-white pb-1 hover:border-brand-yelo dark:hover:border-brand-yelo whitespace-nowrap">
+        <Link href="/fleet" className="flex items-center gap-2 text-gray-900 dark:text-white font-bold text-base sm:text-lg hover:text-brand-yelo dark:hover:text-brand-yelo transition-colors group border-b-2 border-gray-900 dark:border-white pb-1 hover:border-brand-yelo dark:hover:border-brand-yelo whitespace-nowrap">
           View All Vehicles
           <ArrowUpRight
             size={20}
             className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
           />
-        </button>
+        </Link>
       </div>
 
       <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 pb-8 -mx-4 px-4 md:-mx-8 md:px-8 scrollbar-hide">

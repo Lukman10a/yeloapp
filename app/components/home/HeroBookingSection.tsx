@@ -8,6 +8,7 @@ import {
   ChevronsRight,
   MapPin,
 } from "lucide-react";
+import Link from "next/link";
 import SafeImage from "./SafeImage";
 
 type HeroBookingSectionProps = {
@@ -82,9 +83,12 @@ export default function HeroBookingSection({
                   className="group-hover:translate-x-1.5 transition-transform"
                 />
               </button>
-              <button className="bg-white/5 border border-white/20 backdrop-blur-xl text-white px-8 py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg flex items-center justify-center gap-2 hover:bg-white/15 transition-all group w-full sm:w-auto">
+              <Link
+                href="/fleet"
+                className="bg-white/5 border border-white/20 backdrop-blur-xl text-white px-8 py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg flex items-center justify-center gap-2 hover:bg-white/15 transition-all group w-full sm:w-auto"
+              >
                 Explore Fleet
-              </button>
+              </Link>
             </div>
           </motion.div>
         </div>

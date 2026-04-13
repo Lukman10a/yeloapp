@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu, Moon, Sun, X } from "lucide-react";
+import Link from "next/link";
 import { NAV_LINKS } from "./homeData";
 
 type HomeNavbarProps = {
@@ -30,7 +31,10 @@ export default function HomeNavbar({
         }`}
       >
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 flex justify-between items-center">
-          <div className="flex items-center gap-2 relative z-50">
+          <Link
+            href="/"
+            className="flex items-center gap-2 relative z-50 transition-transform active:scale-95 duration-200"
+          >
             <span
               className={`text-2xl md:text-3xl font-black transition-colors ${scrolled ? "text-gray-900 dark:text-white" : "text-white"}`}
             >
@@ -41,18 +45,22 @@ export default function HomeNavbar({
             >
               | يلو
             </span>
-          </div>
+          </Link>
 
           <div className="hidden lg:flex space-x-8 absolute left-1/2 -translate-x-1/2">
             {NAV_LINKS.map((item) => (
-              <div key={item} className="relative group cursor-pointer">
+              <Link
+                key={item}
+                href={item === "Fleet" ? "/fleet" : "/"}
+                className="relative group cursor-pointer"
+              >
                 <span
                   className={`font-medium transition-colors hover:text-brand-yelo ${scrolled ? "text-gray-700 dark:text-gray-300" : "text-white"}`}
                 >
                   {item}
                 </span>
                 <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-brand-yelo transition-all duration-300 group-hover:w-full"></span>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -105,18 +113,19 @@ export default function HomeNavbar({
           onClick={onCloseMenu}
         >
           <div
-            className="absolute right-0 top-0 h-full w-[90%] sm:w-[86%] max-w-sm bg-white dark:bg-brand-charcoal border-l border-gray-200 dark:border-gray-800 p-6 pt-24"
+            className="absolute right-0 top-0 h-full w-[90%] sm:w-[86%] max-w-sm bg-white dark:bg-brand-charcoal border-l border-gray-200 dark:border-gray-800 p-6 pt-24 shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex flex-col gap-2">
               {NAV_LINKS.map((item) => (
-                <button
+                <Link
                   key={item}
+                  href={item === "Fleet" ? "/fleet" : "/"}
                   onClick={onCloseMenu}
                   className="w-full text-left px-4 py-3 rounded-2xl text-gray-800 dark:text-gray-200 font-semibold hover:bg-gray-100 dark:hover:bg-gray-900"
                 >
                   {item}
-                </button>
+                </Link>
               ))}
             </div>
             {/* <div className="mt-8 space-y-3">

@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   Smartphone,
 } from "lucide-react";
+import Link from "next/link";
 import SafeImage from "./SafeImage";
 import { BENTO_CATEGORIES } from "./homeData";
 
@@ -113,9 +114,12 @@ export default function AdditionalSections() {
                   <p className="text-gray-200 md:text-gray-300 font-medium md:text-lg line-clamp-1">
                     {cat.desc}
                   </p>
-                  <div className="mt-4 flex items-center text-white font-bold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all bg-white/20 w-fit px-4 py-2 rounded-full backdrop-blur-sm">
+                  <Link
+                    href="/fleet"
+                    className="mt-4 flex items-center text-white font-bold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all bg-white/20 w-fit px-4 py-2 rounded-full backdrop-blur-sm"
+                  >
                     View Fleet <ArrowRight size={18} className="ml-2" />
-                  </div>
+                  </Link>
                 </div>
               </motion.div>
             ))}
