@@ -69,7 +69,7 @@ export default function Footer() {
       <div className="absolute top-0 right-0 w-1/3 h-full bg-linear-to-bl from-brand-yelo/5 to-transparent pointer-events-none"></div>
 
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-6 gap-x-6 sm:gap-x-12 gap-y-12 md:gap-y-16 mb-16 md:mb-20">
+        <div className="grid grid-cols-2 lg:grid-cols-7 gap-x-6 sm:gap-10 gap-y-12 md:gap-y-16 mb-16 md:mb-20">
           <div className="col-span-2 lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
               <Link
@@ -100,40 +100,47 @@ export default function Footer() {
             {
               title: "Company",
               links: [
-                { name: "About Us", href: "#" },
+                { name: "About Yelo", href: "#" },
                 { name: "Careers", href: "#" },
                 { name: "Franchise", href: "#" },
-                { name: "Media Center", href: "#" },
-                { name: "Contact Us", href: "#" },
               ],
             },
             {
               title: "Rent",
               links: [
-                { name: "Our Fleet", href: "/fleet" },
-                { name: "Branches", href: "#" },
-                { name: "Special Offers", href: "#" },
-                { name: "Long-term Lease", href: "#" },
-                { name: "Yelo Limousine", href: "#" },
+                { name: "Fleet", href: "/fleet" },
+                { name: "Our Branches", href: "#" },
+                { name: "Deals", href: "#" },
               ],
             },
             {
               title: "Useful Links",
               links: [
-                { name: "Terms & Conditions", href: "#" },
-                { name: "Privacy Policy", href: "#" },
-                { name: "FAQ", href: "#" },
-                { name: "Amyali Program", href: "#" },
-                { name: "Site Map", href: "#" },
+                { name: "Contact Us", href: "#" },
+                { name: "Services", href: "#" },
+                { name: "Membership", href: "#" },
+                { name: "Yelo Magazine", href: "#" },
+                { name: "Our News", href: "#" },
               ],
             },
             {
-              title: "Support",
+              title: "Top Cities",
               links: [
-                { name: "Customer Service", href: "#" },
-                { name: "Roadside Assistance", href: "#" },
-                { name: "Feedback", href: "#" },
-                { name: "Find a Branch", href: "#" },
+                { name: "Rent a car in Riyadh", href: "#" },
+                { name: "Rent a car in Makkah", href: "#" },
+                { name: "Rent a car in Al Madinah", href: "#" },
+                { name: "Rent a car in Abha", href: "#" },
+                { name: "Rent a car in Al-'Ula", href: "#" },
+              ],
+            },
+            {
+              title: "Intl Destinations",
+              links: [
+                { name: "Rent a car in Morocco", href: "#" },
+                { name: "Rent a car in UAE", href: "#" },
+                { name: "Rent a car in Oman", href: "#" },
+                { name: "Rent a car in Egypt", href: "#" },
+                { name: "Rent a car in Switzerland", href: "#" },
               ],
             },
           ].map((col) => (

@@ -51,7 +51,13 @@ export default function HomeNavbar({
             {NAV_LINKS.map((item) => (
               <Link
                 key={item}
-                href={item === "Fleet" ? "/fleet" : "/"}
+                href={
+                  item === "Fleet"
+                    ? "/fleet"
+                    : item === "Monthly Subscription"
+                      ? "/monthly-subscription"
+                      : "/"
+                }
                 className="relative group cursor-pointer"
               >
                 <span
@@ -120,7 +126,13 @@ export default function HomeNavbar({
               {NAV_LINKS.map((item) => (
                 <Link
                   key={item}
-                  href={item === "Fleet" ? "/fleet" : "/"}
+                  href={
+                    item === "Fleet"
+                      ? "/fleet"
+                      : item === "Monthly Subscription"
+                        ? "/monthly-subscription"
+                        : "/"
+                  }
                   onClick={onCloseMenu}
                   className="w-full text-left px-4 py-3 rounded-2xl text-gray-800 dark:text-gray-200 font-semibold hover:bg-gray-100 dark:hover:bg-gray-900"
                 >
