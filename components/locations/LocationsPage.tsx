@@ -213,7 +213,7 @@ export default function LocationsPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-transparent border-none focus:ring-0 py-3.5 px-4 text-gray-900 dark:text-white font-semibold outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500"
               />
-              <button className="bg-brand-charcoal dark:bg-brand-yelo text-white dark:text-black px-6 py-3.5 rounded-full font-bold hover:bg-gray-900 dark:hover:bg-yellow-400 transition-colors active:scale-95">
+              <button className="bg-brand-charcoal dark:bg-brand-yelo text-white dark:text-black px-6 py-3.5 rounded-full font-bold hover:bg-gray-900 dark:hover:bg-yellow-400 transition-colors active:scale-95 ui-motion ui-press ui-lift">
                 {isAr ? "بحث" : "Search"}
               </button>
             </div>
@@ -236,7 +236,7 @@ export default function LocationsPage() {
                   <button
                     key={filter}
                     onClick={() => setActiveType(filter)}
-                    className={`flex items-center gap-3 text-start px-4 py-3 rounded-xl font-bold transition-all ${
+                    className={`flex items-center gap-3 text-start px-4 py-3 rounded-xl font-bold transition-all ui-motion ui-press ${
                       activeType === filter
                         ? "bg-brand-yelo/10 text-brand-yelo dark:text-brand-yelo"
                         : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
@@ -269,7 +269,7 @@ export default function LocationsPage() {
                   <button
                     key={city}
                     onClick={() => setActiveCity(city)}
-                    className={`text-start px-4 py-3 border-s-2 font-bold transition-all ${
+                    className={`text-start px-4 py-3 border-s-2 font-bold transition-all ui-motion ui-press ${
                       activeCity === city
                         ? "border-brand-yelo text-brand-yelo"
                         : "border-transparent text-gray-600 dark:text-gray-400 hover:border-gray-300 dark:hover:border-gray-700 hover:text-gray-900 dark:hover:text-white"
@@ -372,7 +372,7 @@ export default function LocationsPage() {
                         </div>
                       </div>
 
-                      <button className="w-full bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white font-bold py-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-brand-charcoal hover:dark:bg-brand-yelo hover:text-white dark:hover:text-black hover:border-transparent transition-colors flex items-center justify-center gap-2 group/btn">
+                      <button className="w-full bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white font-bold py-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-brand-charcoal hover:dark:bg-brand-yelo hover:text-white dark:hover:text-black hover:border-transparent transition-colors flex items-center justify-center gap-2 group/btn ui-motion ui-press ui-lift">
                         {isAr ? "الحصول على الاتجاهات" : "Get Directions"}{" "}
                         <Navigation
                           size={16}
@@ -406,7 +406,7 @@ export default function LocationsPage() {
                         setActiveCity("All Locations");
                         setActiveType("All Types");
                       }}
-                      className="mt-6 text-brand-yelo font-bold hover:underline"
+                      className="mt-6 text-brand-yelo font-bold hover:underline ui-motion ui-press"
                     >
                       {isAr ? "مسح كل الفلاتر" : "Clear All Filters"}
                     </button>

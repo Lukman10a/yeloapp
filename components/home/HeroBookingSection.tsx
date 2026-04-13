@@ -81,7 +81,7 @@ export default function HeroBookingSection({
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <button className="bg-brand-yelo text-black px-8 py-4 md:py-5 rounded-2xl font-black text-base md:text-lg flex items-center justify-center gap-3 hover:bg-yellow-400 transition-all transform hover:scale-[1.03] active:scale-95 shadow-[0_0_30px_rgba(255,208,0,0.3)] group w-full sm:w-auto">
+              <button className="bg-brand-yelo text-black px-8 py-4 md:py-5 rounded-2xl font-black text-base md:text-lg flex items-center justify-center gap-3 hover:bg-yellow-400 transition-all transform hover:scale-[1.03] active:scale-95 shadow-[0_0_30px_rgba(255,208,0,0.3)] group w-full sm:w-auto ui-motion ui-press ui-lift">
                 <CarFront size={22} />
                 {isAr ? "احجز الآن" : "Reserve Now"}
                 <ArrowRight
@@ -91,7 +91,7 @@ export default function HeroBookingSection({
               </button>
               <Link
                 href="/fleet"
-                className="bg-white/5 border border-white/20 backdrop-blur-xl text-white px-8 py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg flex items-center justify-center gap-2 hover:bg-white/15 transition-all group w-full sm:w-auto"
+                className="bg-white/5 border border-white/20 backdrop-blur-xl text-white px-8 py-4 md:py-5 rounded-2xl font-bold text-base md:text-lg flex items-center justify-center gap-2 hover:bg-white/15 transition-all group w-full sm:w-auto ui-motion ui-press ui-lift"
               >
                 {isAr ? "استكشف الأسطول" : "Explore Fleet"}
               </Link>
@@ -118,7 +118,7 @@ export default function HeroBookingSection({
                 <button
                   key={tab.en}
                   onClick={() => onChangeTab(tab.en)}
-                  className={`whitespace-nowrap px-6 py-4 rounded-2xl md:rounded-full text-sm font-bold transition-all duration-300 ${
+                  className={`whitespace-nowrap px-6 py-4 rounded-2xl md:rounded-full text-sm font-bold transition-all duration-300 ui-motion ui-press ${
                     activeTab === tab.en
                       ? "bg-gray-900 dark:bg-white text-white dark:text-gray-900 shadow-xl scale-100"
                       : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -185,7 +185,7 @@ export default function HeroBookingSection({
                 </div>
               </div>
 
-              <button className="w-full lg:w-auto mt-2 lg:mt-0 bg-gray-900 dark:bg-brand-yelo text-white dark:text-black px-10 py-5 rounded-2xl md:rounded-full font-black text-lg flex items-center justify-center gap-2 hover:bg-black dark:hover:bg-yellow-400 hover:scale-[1.02] active:scale-95 transition-all flex-none shadow-xl lg:ms-2">
+              <button className="w-full lg:w-auto mt-2 lg:mt-0 bg-gray-900 dark:bg-brand-yelo text-white dark:text-black px-10 py-5 rounded-2xl md:rounded-full font-black text-lg flex items-center justify-center gap-2 hover:bg-black dark:hover:bg-yellow-400 hover:scale-[1.02] active:scale-95 transition-all flex-none shadow-xl lg:ms-2 ui-motion ui-press ui-lift">
                 {isAr ? "بحث" : "Search"}{" "}
                 <ArrowRight size={20} className="rtl:-scale-x-100" />
               </button>

@@ -97,7 +97,7 @@ export default function MonthlySubPage() {
                 ].map((tab, idx) => (
                   <button
                     key={idx}
-                    className={`whitespace-nowrap px-6 py-4 rounded-xl text-sm font-bold transition-all duration-300 ${
+                    className={`whitespace-nowrap px-6 py-4 rounded-xl text-sm font-bold transition-all duration-300 ui-motion ui-press ${
                       tab === "Monthly Subscription"
                         ? "bg-white dark:bg-gray-800 text-brand-charcoal dark:text-white"
                         : "text-gray-400 hover:text-white hover:bg-white/10"
@@ -207,7 +207,7 @@ export default function MonthlySubPage() {
                         ? "تحتاج أكثر من 12 شهرا؟"
                         : "Need More than 12 month?"}
                     </span>
-                    <button className="bg-brand-charcoal dark:bg-brand-yelo text-white dark:text-black py-4 px-8 rounded-xl font-bold flex-1 sm:flex-none flex justify-center items-center gap-2 hover:bg-gray-800 dark:hover:bg-yellow-400 transition-all shadow-lg shadow-gray-900/20 active:scale-95 group">
+                    <button className="bg-brand-charcoal dark:bg-brand-yelo text-white dark:text-black py-4 px-8 rounded-xl font-bold flex-1 sm:flex-none flex justify-center items-center gap-2 hover:bg-gray-800 dark:hover:bg-yellow-400 transition-all shadow-lg shadow-gray-900/20 active:scale-95 group ui-motion ui-press ui-lift">
                       {isAr ? "بحث" : "Search"}{" "}
                       <ArrowRight
                         size={18}
@@ -347,7 +347,7 @@ export default function MonthlySubPage() {
             </div>
 
             <div className="mt-20">
-              <button className="bg-brand-charcoal dark:bg-brand-yelo text-white dark:text-black font-black px-10 py-5 rounded-2xl hover:bg-gray-900 dark:hover:bg-yellow-400 transition-colors shadow-xl hover:scale-105 active:scale-95">
+              <button className="bg-brand-charcoal dark:bg-brand-yelo text-white dark:text-black font-black px-10 py-5 rounded-2xl hover:bg-gray-900 dark:hover:bg-yellow-400 transition-colors shadow-xl hover:scale-105 active:scale-95 ui-motion ui-press ui-lift">
                 {isAr ? "اكتشف المزيد" : "Discover more"}
               </button>
             </div>

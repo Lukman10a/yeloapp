@@ -193,13 +193,13 @@ export default function FleetPage() {
             <div className="flex bg-gray-200 dark:bg-gray-800 p-1 rounded-xl">
               <button
                 onClick={() => setViewMode("list")}
-                className={`p-2 rounded-lg transition-all ${viewMode === "list" ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm" : "text-gray-400 hover:text-gray-900 dark:hover:text-white"}`}
+                className={`p-2 rounded-lg transition-all ui-motion ui-press ${viewMode === "list" ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm" : "text-gray-400 hover:text-gray-900 dark:hover:text-white"}`}
               >
                 <List size={20} />
               </button>
               <button
                 onClick={() => setViewMode("grid")}
-                className={`p-2 rounded-lg transition-all ${viewMode === "grid" ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm" : "text-gray-400 hover:text-gray-900 dark:hover:text-white"}`}
+                className={`p-2 rounded-lg transition-all ui-motion ui-press ${viewMode === "grid" ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm" : "text-gray-400 hover:text-gray-900 dark:hover:text-white"}`}
               >
                 <LayoutGrid size={20} />
               </button>
@@ -213,7 +213,7 @@ export default function FleetPage() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`whitespace-nowrap px-6 py-3 rounded-2xl md:rounded-full text-sm font-bold transition-all border ${
+              className={`whitespace-nowrap px-6 py-3 rounded-2xl md:rounded-full text-sm font-bold transition-all border ui-motion ui-press ${
                 activeCategory === cat
                   ? "bg-gray-900 dark:bg-brand-yelo border-gray-900 dark:border-brand-yelo text-white dark:text-black shadow-lg"
                   : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500"
@@ -338,7 +338,7 @@ export default function FleetPage() {
 
         {filteredCars.length > 0 && (
           <div className="flex justify-center mt-12">
-            <button className="bg-gray-900 dark:bg-brand-yelo text-white dark:text-black hover:bg-black dark:hover:bg-yellow-400 px-8 py-4 rounded-2xl font-black transition-transform active:scale-95 shadow-xl">
+            <button className="bg-gray-900 dark:bg-brand-yelo text-white dark:text-black hover:bg-black dark:hover:bg-yellow-400 px-8 py-4 rounded-2xl font-black transition-transform active:scale-95 shadow-xl ui-motion ui-press ui-lift">
               {isAr ? "تحميل المزيد" : "Load More"}
             </button>
           </div>
@@ -425,7 +425,7 @@ function CarCard({
                   : "Price do not include VAT"}
               </span>
             </div>
-            <button className="bg-gray-900 dark:bg-brand-yelo text-white dark:text-black font-black text-sm px-5 py-3 rounded-xl hover:scale-105 active:scale-95 transition-all">
+            <button className="bg-gray-900 dark:bg-brand-yelo text-white dark:text-black font-black text-sm px-5 py-3 rounded-xl hover:scale-105 active:scale-95 transition-all ui-motion ui-press ui-lift">
               {isAr ? "احجز الآن" : "BOOK NOW"}
             </button>
           </div>
@@ -509,13 +509,13 @@ function CarCard({
           </div>
 
           <div className="flex items-center gap-4 w-full md:w-auto">
-            <button className="text-gray-400 hover:text-gray-900 dark:hover:text-brand-yelo text-xs uppercase font-bold flex items-center gap-1 transition-colors">
+            <button className="text-gray-400 hover:text-gray-900 dark:hover:text-brand-yelo text-xs uppercase font-bold flex items-center gap-1 transition-colors ui-motion ui-press">
               <span className="w-4 h-4 flex items-center justify-center bg-gray-200 dark:bg-gray-800 rounded-sm">
                 ★
               </span>
               {isAr ? "حفظ" : "Save"}
             </button>
-            <button className="bg-gray-900 dark:bg-brand-yelo text-white dark:text-black font-black text-sm px-8 py-4 rounded-2xl hover:scale-105 active:scale-95 transition-all flex-1 md:flex-auto whitespace-nowrap shadow-md">
+            <button className="bg-gray-900 dark:bg-brand-yelo text-white dark:text-black font-black text-sm px-8 py-4 rounded-2xl hover:scale-105 active:scale-95 transition-all flex-1 md:flex-auto whitespace-nowrap shadow-md ui-motion ui-press ui-lift">
               {isAr ? "احجز الآن" : "BOOK NOW"}
             </button>
           </div>

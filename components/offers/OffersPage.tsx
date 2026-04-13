@@ -134,7 +134,7 @@ export default function OffersPage() {
                   alt={isAr ? offer.titleAr : offer.titleEn}
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"
-                  quality={65}
+                  quality={60}
                 />
                 <div className="absolute top-4 inset-s-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 text-white text-xs font-bold">
                   <BadgePercent size={14} className="text-brand-yelo" />

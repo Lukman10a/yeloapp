@@ -45,3 +45,18 @@ body {
 .hover-lift:hover {
   transform: translateY(-8px) scale(1.02);
 }
+
+/* Shared interaction motion tokens for buttons, pills, and toggles */
+.ui-motion {
+  transition-property: transform, background-color, border-color, color, box-shadow, opacity;
+  transition-duration: 280ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ui-press:active {
+  transform: scale(0.97);
+}
+
+.ui-lift:hover {
+  transform: translateY(-2px);
+}
