@@ -14,13 +14,16 @@ import Link from "next/link";
 import HomeNavbar from "../home/HomeNavbar";
 import SafeImage from "../home/SafeImage";
 import { MONTHLY_FEATURES, STEPS } from "./subData";
+import { useLanguage } from "@/app/providers";
 
 export default function MonthlySubPage() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const { resolvedTheme, setTheme } = useTheme();
+  const { language } = useLanguage();
   const isDark = resolvedTheme === "dark";
+  const isAr = language === "ar";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -65,12 +68,13 @@ export default function MonthlySubPage() {
             {/* Left Hero Text */}
             <div className="max-w-2xl">
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-tight mb-4 tracking-tight text-white drop-shadow-xl">
-                Yelo Monthly{" "}
-                <span className="text-brand-yelo">Subscription</span>
+                {isAr ? "اشتراك يلو" : "Yelo Monthly"}{" "}
+                <span className="text-brand-yelo">{isAr ? "الشهري" : "Subscription"}</span>
               </h1>
               <p className="text-lg sm:text-xl text-gray-200 md:text-gray-300 max-w-xl font-medium tracking-wide">
-                Subscribe today and enjoy the endless benefits of owning a
-                vehicle without the hassle of ownership.
+                {isAr
+                  ? "اشترك اليوم واستمتع بمزايا لا تنتهي لاستخدام سيارة دون أعباء التملك."
+                  : "Subscribe today and enjoy the endless benefits of owning a vehicle without the hassle of ownership."}
               </p>
             </div>
 
@@ -84,10 +88,10 @@ export default function MonthlySubPage() {
               {/* Tabs */}
               <div className="flex overflow-x-auto scrollbar-hide bg-brand-charcoal dark:bg-black p-1 text-white">
                 {[
-                  "Search Now",
-                  "Monthly Subscription",
-                  "Manage My Booking",
-                  "Yelo Limousine",
+                  isAr ? "ابحث الآن" : "Search Now",
+                  isAr ? "الاشتراك الشهري" : "Monthly Subscription",
+                  isAr ? "إدارة حجزي" : "Manage My Booking",
+                  isAr ? "يلو ليموزين" : "Yelo Limousine",
                 ].map((tab, idx) => (
                   <button
                     key={idx}
@@ -115,25 +119,25 @@ export default function MonthlySubPage() {
                   <div className="col-span-1 md:col-span-2">
                     <div className="flex justify-between items-center mb-2">
                       <label className="text-sm font-bold text-gray-700 dark:text-gray-300">
-                        Pick up & Return location
+                        {isAr ? "موقع الاستلام والإرجاع" : "Pick up & Return location"}
                       </label>
                       <label className="flex items-center gap-2 text-xs font-semibold text-gray-500 cursor-pointer">
                         <input
                           type="checkbox"
                           className="rounded text-brand-yelo focus:ring-brand-yelo"
                         />
-                        Return to a different location
+                        {isAr ? "إرجاع إلى موقع مختلف" : "Return to a different location"}
                       </label>
                     </div>
                     <div className="relative">
                       <MapPin
-                        className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                        className="absolute inset-s-3 top-1/2 -translate-y-1/2 text-gray-400"
                         size={20}
                       />
                       <input
                         type="text"
-                        placeholder="Search Location"
-                        className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 rounded-xl py-3.5 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-brand-yelo dark:focus:ring-brand-yelo transition-all font-semibold"
+                        placeholder={isAr ? "ابحث عن الموقع" : "Search Location"}
+                        className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 rounded-xl py-3.5 ps-10 pe-4 focus:outline-none focus:ring-2 focus:ring-brand-yelo dark:focus:ring-brand-yelo transition-all font-semibold"
                       />
                     </div>
                   </div>
@@ -141,20 +145,20 @@ export default function MonthlySubPage() {
                   {/* Dates */}
                   <div className="col-span-1">
                     <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                      Pick up date & time
+                      {isAr ? "تاريخ ووقت الاستلام" : "Pick up date & time"}
                     </label>
                     <div className="flex w-full overflow-hidden border border-gray-200 dark:border-gray-700 rounded-xl">
-                      <div className="relative w-2/3 border-r border-gray-200 dark:border-gray-700">
+                      <div className="relative w-2/3 border-e border-gray-200 dark:border-gray-700">
                         <input
                           type="text"
-                          placeholder="Date"
+                          placeholder={isAr ? "التاريخ" : "Date"}
                           className="w-full bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 py-3.5 px-4 focus:outline-none focus:ring-2 focus:ring-brand-yelo transition-all font-semibold"
                         />
                       </div>
                       <div className="w-1/3 relative">
                         <input
                           type="text"
-                          placeholder="Time"
+                          placeholder={isAr ? "الوقت" : "Time"}
                           className="w-full bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 py-3.5 px-3 focus:outline-none focus:ring-2 focus:ring-brand-yelo transition-all font-semibold text-center"
                         />
                       </div>
@@ -164,18 +168,18 @@ export default function MonthlySubPage() {
                   {/* Contract */}
                   <div className="col-span-1 md:col-span-1">
                     <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                      Contract Length
+                      {isAr ? "مدة العقد" : "Contract Length"}
                     </label>
                     <div className="relative">
                       <select className="appearance-none w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-400 rounded-xl py-3.5 px-4 focus:outline-none focus:ring-2 focus:ring-brand-yelo transition-all font-semibold cursor-pointer">
-                        <option>--Select--</option>
-                        <option>1 Month</option>
-                        <option>3 Months</option>
-                        <option>6 Months</option>
-                        <option>12 Months</option>
+                        <option>{isAr ? "--اختر--" : "--Select--"}</option>
+                        <option>{isAr ? "شهر واحد" : "1 Month"}</option>
+                        <option>{isAr ? "3 أشهر" : "3 Months"}</option>
+                        <option>{isAr ? "6 أشهر" : "6 Months"}</option>
+                        <option>{isAr ? "12 شهرا" : "12 Months"}</option>
                       </select>
                       <ChevronDown
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+                        className="absolute inset-e-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
                         size={20}
                       />
                     </div>
@@ -187,17 +191,17 @@ export default function MonthlySubPage() {
                     href="#"
                     className="text-gray-600 dark:text-gray-400 font-bold border-b border-gray-400 pb-0.5 hover:text-brand-yelo hover:border-brand-yelo transition-all text-sm"
                   >
-                    Know More
+                    {isAr ? "اعرف المزيد" : "Know More"}
                   </Link>
                   <div className="flex items-center gap-4 w-full sm:w-auto">
                     <span className="text-brand-charcoal dark:text-brand-yelo font-bold text-sm hidden sm:block">
-                      Need More than 12 month?
+                      {isAr ? "تحتاج أكثر من 12 شهرا؟" : "Need More than 12 month?"}
                     </span>
                     <button className="bg-brand-charcoal dark:bg-brand-yelo text-white dark:text-black py-4 px-8 rounded-xl font-bold flex-1 sm:flex-none flex justify-center items-center gap-2 hover:bg-gray-800 dark:hover:bg-yellow-400 transition-all shadow-lg shadow-gray-900/20 active:scale-95 group">
-                      Search{" "}
+                      {isAr ? "بحث" : "Search"}{" "}
                       <ArrowRight
                         size={18}
-                        className="group-hover:translate-x-1 transition-transform"
+                        className="group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:-scale-x-100 transition-transform"
                       />
                     </button>
                   </div>
@@ -210,23 +214,25 @@ export default function MonthlySubPage() {
 
       {/* Main Sections */}
       <section className="relative z-10 -mt-8 py-20 bg-brand-offwhite dark:bg-brand-charcoal transition-colors duration-500">
-        <div className="max-w-screen-xl mx-auto px-4 md:px-8 text-center mb-16 md:mb-24">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 text-center mb-16 md:mb-24">
           <h2 className="text-3xl md:text-5xl font-black text-brand-charcoal dark:text-brand-yelo mb-6 tracking-tight">
-            Why the Monthly Subscription from Yelo?
+            {isAr ? "لماذا الاشتراك الشهري من يلو؟" : "Why the Monthly Subscription from Yelo?"}
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed font-medium">
-            If you desire the convenience of regularly driving a vehicle without
-            the hassle of managing its maintenance, insurance, and any other
-            added fees then a long-term rental is the perfect solution for you.
+            {isAr
+              ? "إذا كنت ترغب براحة استخدام سيارة باستمرار دون عناء إدارة الصيانة والتأمين والرسوم الإضافية، فالإيجار طويل المدى هو الحل المثالي لك."
+              : "If you desire the convenience of regularly driving a vehicle without the hassle of managing its maintenance, insurance, and any other added fees then a long-term rental is the perfect solution for you."}
           </p>
         </div>
 
         <div className="max-w-screen-2xl mx-auto px-4 md:px-8 text-center mb-12">
           <h3 className="text-2xl md:text-4xl font-black text-brand-charcoal dark:text-brand-yelo mb-4 tracking-tight">
-            Instant Rental
+            {isAr ? "تأجير فوري" : "Instant Rental"}
           </h3>
           <p className="text-gray-600 dark:text-gray-300 font-medium md:text-lg">
-            Get your car in hassle-free process with a minimal paperwork
+            {isAr
+              ? "احصل على سيارتك بسهولة وبأقل قدر من الإجراءات."
+              : "Get your car in hassle-free process with a minimal paperwork"}
           </p>
         </div>
 
@@ -253,10 +259,22 @@ export default function MonthlySubPage() {
                 </div>
                 <div className="text-center">
                   <h4 className="text-xl md:text-2xl font-black text-brand-charcoal dark:text-brand-yelo mb-3 tracking-tight">
-                    {feat.title}
+                    {isAr
+                      ? {
+                          "Ready and various fleet": "أسطول جاهز ومتنوع",
+                          "Flexibility with no commitment": "مرونة بدون التزام",
+                          "Roadside Assistance": "مساعدة على الطريق",
+                        }[feat.title] || feat.title
+                      : feat.title}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-300 font-medium leading-relaxed">
-                    {feat.desc}
+                    {isAr
+                      ? {
+                          "Our fleet is ready for your pick up; Get to choose the car you wish for your journey.": "أسطولنا جاهز لاستلامك، واختر السيارة التي تناسب رحلتك.",
+                          "Cancel your subscription anytime you wish with no financial penalties applied": "ألغ اشتراكك في أي وقت دون أي غرامات مالية.",
+                          "We’re always near to help you on the go with the fully-equipped maintenance fleet": "نحن دائما بالقرب منك لمساعدتك بأسطول صيانة مجهز بالكامل.",
+                        }[feat.desc] || feat.desc
+                      : feat.desc}
                   </p>
                 </div>
               </motion.div>
@@ -266,17 +284,19 @@ export default function MonthlySubPage() {
 
         {/* 3 Step Journey */}
         <div className="bg-gray-100 dark:bg-gray-900/50 py-24 border-t border-gray-200 dark:border-gray-800">
-          <div className="max-w-screen-xl mx-auto px-4 text-center">
+          <div className="max-w-7xl mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-5xl font-black text-brand-charcoal dark:text-brand-yelo mb-4 tracking-tight">
-              3 steps Journey
+              {isAr ? "رحلة من 3 خطوات" : "3 steps Journey"}
             </h2>
             <p className="text-gray-600 dark:text-gray-400 font-medium md:text-lg mb-16">
-              We made it easy for you, get your car in few taps
+              {isAr
+                ? "جعلناها سهلة لك، احصل على سيارتك خلال نقرات قليلة."
+                : "We made it easy for you, get your car in few taps"}
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
               {/* Responsive connecting dashed line */}
-              <div className="hidden md:block absolute top-[28px] left-[15%] right-[15%] h-[2px] border-t-2 border-dashed border-gray-300 dark:border-gray-700 z-0"></div>
+              <div className="hidden md:block absolute top-7 left-[15%] right-[15%] h-0.5 border-t-2 border-dashed border-gray-300 dark:border-gray-700 z-0"></div>
 
               {STEPS.map((step, idx) => (
                 <div
@@ -287,10 +307,22 @@ export default function MonthlySubPage() {
                     {step.num}
                   </div>
                   <h5 className="text-xl md:text-2xl font-black text-brand-charcoal dark:text-white mb-3">
-                    {step.title}
+                    {isAr
+                      ? {
+                          "Personalize your subscription": "خصص اشتراكك",
+                          "Pick up your car": "استلم سيارتك",
+                          "Manage your subscription": "أدر اشتراكك",
+                        }[step.title] || step.title
+                      : step.title}
                   </h5>
                   <p className="text-gray-600 dark:text-gray-400 font-medium max-w-xs mx-auto">
-                    {step.desc}
+                    {isAr
+                      ? {
+                          "Select the ideal car and customize your subscription terms.": "اختر السيارة المثالية وحدد شروط اشتراكك.",
+                          "Collect your newly subscribed car from your chosen branch.": "استلم سيارتك الجديدة من الفرع الذي اخترته.",
+                          "Control your entire journey right from your fingertips.": "أدر كامل رحلتك بسهولة من هاتفك.",
+                        }[step.desc] || step.desc
+                      : step.desc}
                   </p>
                 </div>
               ))}
@@ -298,7 +330,7 @@ export default function MonthlySubPage() {
 
             <div className="mt-20">
               <button className="bg-brand-charcoal dark:bg-brand-yelo text-white dark:text-black font-black px-10 py-5 rounded-2xl hover:bg-gray-900 dark:hover:bg-yellow-400 transition-colors shadow-xl hover:scale-105 active:scale-95">
-                Discover more
+                {isAr ? "اكتشف المزيد" : "Discover more"}
               </button>
             </div>
           </div>

@@ -18,6 +18,7 @@ import Link from "next/link";
 import HomeNavbar from "../home/HomeNavbar";
 import SafeImage from "../home/SafeImage";
 import { FLEET_CARS, CATEGORIES, FleetCar } from "./fleetData";
+import { useLanguage } from "@/app/providers";
 
 const HERO_IMAGES = [
   "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=2000&auto=format&fit=crop",
@@ -36,7 +37,23 @@ export default function FleetPage() {
   const [sortBy, setSortBy] = useState("price-asc");
 
   const { resolvedTheme, setTheme } = useTheme();
+  const { language } = useLanguage();
   const isDark = resolvedTheme === "dark";
+  const isAr = language === "ar";
+
+  const categoryLabel = (cat: string) =>
+    isAr
+      ? {
+          "All Fleet": "كل الأسطول",
+          "Small Cars": "سيارات صغيرة",
+          "Sedan & compact": "سيدان ومدمجة",
+          "SUV & Crossover": "دفع رباعي وكروس أوفر",
+          Electric: "كهربائي",
+          Luxury: "فاخر",
+          Family: "عائلي",
+          Sports: "رياضي",
+        }[cat] || cat
+      : cat;
 
   useEffect(() => {
     // For inner pages, we can just treat it constantly scrolled if we want a solid nav,
@@ -116,10 +133,10 @@ export default function FleetPage() {
                 href="/"
                 className="hover:text-brand-yelo transition-colors text-white"
               >
-                Home
+                {isAr ? "الرئيسية" : "Home"}
               </Link>
               <ChevronRight size={16} className="mx-2 text-white" />
-              <span className="text-white">Fleet</span>
+              <span className="text-white">{isAr ? "الأسطول" : "Fleet"}</span>
             </div>
 
             <motion.div
@@ -128,16 +145,16 @@ export default function FleetPage() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="inline-flex items-center px-4 py-2 rounded-full border border-white/20 bg-white/10 text-white text-[10px] md:text-xs font-bold tracking-widest uppercase mb-6 md:mb-8 backdrop-blur-md shadow-2xl"
             >
-              <span className="w-2 h-2 rounded-full bg-brand-yelo mr-2 animate-pulse"></span>
-              PREMIUM VEHICLES
+              <span className="w-2 h-2 rounded-full bg-brand-yelo me-2 animate-pulse"></span>
+              {isAr ? "سيارات مميزة" : "PREMIUM VEHICLES"}
             </motion.div>
 
             <h1 className="text-[2.4rem] sm:text-5xl md:text-7xl font-black leading-[1.05] mb-6 tracking-tight text-white">
-              Discover Our <br />
+              {isAr ? "اكتشف" : "Discover Our"} <br />
               <span className="relative inline-block text-transparent bg-clip-text bg-linear-to-r from-brand-yelo to-yellow-200 pb-2">
-                Premium Fleet
+                {isAr ? "أسطولنا المميز" : "Premium Fleet"}
                 <motion.span
-                  className="absolute bottom-1 md:bottom-2 left-0 w-full h-0.75 md:h-2 bg-brand-yelo/60 rounded-full blur-md"
+                  className="absolute bottom-1 md:bottom-2 inset-s-0 w-full h-0.75 md:h-2 bg-brand-yelo/60 rounded-full blur-md"
                   initial={{ opacity: 0, scaleX: 0 }}
                   animate={{ opacity: 1, scaleX: 1 }}
                   transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
@@ -147,9 +164,9 @@ export default function FleetPage() {
             </h1>
 
             <p className="text-sm sm:text-base md:text-xl text-gray-300 md:text-gray-200 mb-8 max-w-2xl leading-relaxed font-medium md:font-light">
-              Experience the pinnacle of driving comfort. Browse our exclusive
-              selection of meticulously maintained vehicles suited for any
-              destination.
+              {isAr
+                ? "استمتع بأقصى درجات الراحة أثناء القيادة. تصفح مجموعتنا الحصرية من السيارات المصانة بعناية لكل وجهة."
+                : "Experience the pinnacle of driving comfort. Browse our exclusive selection of meticulously maintained vehicles suited for any destination."}
             </p>
           </motion.div>
         </div>
@@ -160,17 +177,18 @@ export default function FleetPage() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
           <div>
             <h2 className="text-2xl sm:text-3xl font-black mb-2 tracking-tight text-gray-900 dark:text-white">
-              Available Vehicles
+              {isAr ? "السيارات المتاحة" : "Available Vehicles"}
             </h2>
             <p className="text-gray-500 dark:text-gray-400 font-medium">
-              {filteredCars.length} Vehicle
-              {filteredCars.length !== 1 ? "s" : ""} Available
+              {isAr
+                ? `${filteredCars.length} سيارة متاحة`
+                : `${filteredCars.length} Vehicle${filteredCars.length !== 1 ? "s" : ""} Available`}
             </p>
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-sm font-bold text-gray-500 mr-2">
-              Saved for later items
+            <span className="text-sm font-bold text-gray-500 me-2">
+              {isAr ? "عناصر محفوظة لاحقا" : "Saved for later items"}
             </span>
             <div className="flex bg-gray-200 dark:bg-gray-800 p-1 rounded-xl">
               <button
@@ -201,7 +219,7 @@ export default function FleetPage() {
                   : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500"
               }`}
             >
-              {cat}
+              {categoryLabel(cat)}
             </button>
           ))}
         </div>
@@ -211,7 +229,7 @@ export default function FleetPage() {
           <div className="flex-1 w-full flex flex-col sm:flex-row gap-6">
             <div className="flex-1">
               <label className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 block">
-                By Categories
+                {isAr ? "حسب الفئة" : "By Categories"}
               </label>
               <select
                 title="Category"
@@ -221,7 +239,7 @@ export default function FleetPage() {
               >
                 {CATEGORIES.map((cat) => (
                   <option key={cat} value={cat}>
-                    {cat}
+                    {categoryLabel(cat)}
                   </option>
                 ))}
               </select>
@@ -229,7 +247,7 @@ export default function FleetPage() {
 
             <div className="flex-1">
               <label className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 block">
-                Sort by
+                {isAr ? "ترتيب حسب" : "Sort by"}
               </label>
               <select
                 title="Sort order"
@@ -237,8 +255,8 @@ export default function FleetPage() {
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
               >
-                <option value="price-asc">Price Low to High</option>
-                <option value="price-desc">Price High to Low</option>
+                <option value="price-asc">{isAr ? "السعر من الأقل للأعلى" : "Price Low to High"}</option>
+                <option value="price-desc">{isAr ? "السعر من الأعلى للأقل" : "Price High to Low"}</option>
               </select>
             </div>
           </div>
@@ -246,7 +264,7 @@ export default function FleetPage() {
           <div className="flex-1 w-full max-w-sm">
             <div className="flex justify-between mb-2">
               <label className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider block">
-                Price Range
+                {isAr ? "نطاق السعر" : "Price Range"}
               </label>
               <span className="text-xs font-bold text-gray-900 dark:text-white">
                 152 SAR - {priceRange} SAR
@@ -271,7 +289,9 @@ export default function FleetPage() {
                 htmlFor="stock"
                 className="text-sm font-semibold text-gray-600 dark:text-gray-400 cursor-pointer"
               >
-                Show all include out of stock
+                {isAr
+                  ? "إظهار الكل بما في ذلك غير المتاح"
+                  : "Show all include out of stock"}
               </label>
             </div>
           </div>
@@ -284,7 +304,7 @@ export default function FleetPage() {
         >
           <AnimatePresence>
             {filteredCars.map((car) => (
-              <CarCard key={car.id} car={car} viewMode={viewMode} />
+              <CarCard key={car.id} car={car} viewMode={viewMode} isAr={isAr} categoryLabel={categoryLabel} />
             ))}
           </AnimatePresence>
 
@@ -295,10 +315,12 @@ export default function FleetPage() {
                 className="mx-auto text-gray-300 dark:text-gray-600 mb-4"
               />
               <h3 className="text-xl font-black text-gray-900 dark:text-white mb-2">
-                No Vehicles Found
+                {isAr ? "لا توجد سيارات" : "No Vehicles Found"}
               </h3>
               <p className="text-gray-500">
-                Try adjusting your filters or search criteria.
+                {isAr
+                  ? "جرب تعديل الفلاتر أو معايير البحث."
+                  : "Try adjusting your filters or search criteria."}
               </p>
             </div>
           )}
@@ -307,7 +329,7 @@ export default function FleetPage() {
         {filteredCars.length > 0 && (
           <div className="flex justify-center mt-12">
             <button className="bg-gray-900 dark:bg-brand-yelo text-white dark:text-black hover:bg-black dark:hover:bg-yellow-400 px-8 py-4 rounded-2xl font-black transition-transform active:scale-95 shadow-xl">
-              Load More
+              {isAr ? "تحميل المزيد" : "Load More"}
             </button>
           </div>
         )}
@@ -322,6 +344,8 @@ function CarCard({
 }: {
   car: FleetCar;
   viewMode: "grid" | "list";
+  isAr: boolean;
+  categoryLabel: (cat: string) => string;
 }) {
   if (viewMode === "grid") {
     return (
@@ -343,13 +367,13 @@ function CarCard({
         </div>
         <div className="p-6 flex-1 flex flex-col">
           <div className="flex items-center gap-2 mb-2 text-brand-yelo dark:text-brand-yelo font-bold text-xs uppercase tracking-wider">
-            <CarFront size={14} /> {car.category}
+            <CarFront size={14} /> {categoryLabel(car.category)}
           </div>
           <h3 className="text-xl font-black text-gray-900 dark:text-white mb-1">
             {car.name}
           </h3>
           <p className="text-gray-500 dark:text-gray-400 text-sm font-medium mb-4">
-            or Similar
+            {isAr ? "أو ما يماثلها" : "or Similar"}
           </p>
 
           <div className="flex items-center gap-4 text-gray-500 dark:text-gray-400 text-sm font-medium mb-6 mt-auto">
@@ -384,11 +408,11 @@ function CarCard({
                 <span className="text-sm font-bold text-brand-yelo">SAR</span>
               </span>
               <span className="text-[10px] text-gray-500 mt-1 uppercase">
-                Price do not include VAT
+                {isAr ? "السعر لا يشمل ضريبة القيمة المضافة" : "Price do not include VAT"}
               </span>
             </div>
             <button className="bg-gray-900 dark:bg-brand-yelo text-white dark:text-black font-black text-sm px-5 py-3 rounded-xl hover:scale-105 active:scale-95 transition-all">
-              BOOK NOW
+              {isAr ? "احجز الآن" : "BOOK NOW"}
             </button>
           </div>
         </div>
@@ -418,13 +442,13 @@ function CarCard({
       <div className="p-6 md:p-8 flex-1 flex flex-col md:flex-row gap-6 md:gap-8 justify-between relative">
         <div className="flex flex-col justify-center flex-1">
           <div className="flex items-center gap-2 mb-2 text-brand-yelo dark:text-brand-yelo font-bold text-xs uppercase tracking-wider">
-            <CarFront size={14} /> {car.category}
+            <CarFront size={14} /> {categoryLabel(car.category)}
           </div>
           <h3 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-2">
             {car.name}
           </h3>
           <p className="text-gray-500 dark:text-gray-400 text-sm font-medium mb-6">
-            or Similar
+            {isAr ? "أو ما يماثلها" : "or Similar"}
           </p>
 
           <div className="flex items-center gap-5 text-gray-600 dark:text-gray-300 text-sm font-semibold bg-gray-50 dark:bg-gray-800/50 w-fit px-5 py-3 rounded-2xl">
@@ -447,14 +471,14 @@ function CarCard({
           </div>
         </div>
 
-        <div className="flex flex-col items-start md:items-end justify-center border-t md:border-t-0 md:border-l border-gray-100 dark:border-gray-800 pt-6 md:pt-0 md:pl-8 min-w-50">
+        <div className="flex flex-col items-start md:items-end justify-center border-t md:border-t-0 md:border-s border-gray-100 dark:border-gray-800 pt-6 md:pt-0 md:ps-8 min-w-50">
           <div className="flex items-end justify-between md:flex-col md:items-end w-full mb-6 gap-2">
             <div className="flex flex-col items-start md:items-end text-left md:text-right">
               <span className="text-gray-500 text-sm font-bold mb-1">
-                Price for 1 day(s)
+                {isAr ? "السعر لليوم الواحد" : "Price for 1 day(s)"}
               </span>
               <span className="text-gray-700 dark:text-gray-300 text-sm font-bold mb-1">
-                Free KM {car.freeKm}
+                {isAr ? `كم مجاني ${car.freeKm}` : `Free KM ${car.freeKm}`}
               </span>
               <div className="flex items-center gap-1.5 text-gray-400 line-through text-sm font-semibold">
                 <Info size={12} className="text-brand-yelo" />{" "}
@@ -475,14 +499,14 @@ function CarCard({
               <span className="w-4 h-4 flex items-center justify-center bg-gray-200 dark:bg-gray-800 rounded-sm">
                 ★
               </span>
-              Save
+              {isAr ? "حفظ" : "Save"}
             </button>
             <button className="bg-gray-900 dark:bg-brand-yelo text-white dark:text-black font-black text-sm px-8 py-4 rounded-2xl hover:scale-105 active:scale-95 transition-all flex-1 md:flex-auto whitespace-nowrap shadow-md">
-              BOOK NOW
+              {isAr ? "احجز الآن" : "BOOK NOW"}
             </button>
           </div>
           <span className="text-[10px] text-gray-400 uppercase mt-4 block text-center md:text-right w-full">
-            Price do not include VAT
+            {isAr ? "السعر لا يشمل ضريبة القيمة المضافة" : "Price do not include VAT"}
           </span>
         </div>
       </div>

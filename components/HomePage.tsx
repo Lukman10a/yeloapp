@@ -10,7 +10,7 @@ import PremiumFleetSection from "./home/PremiumFleetSection";
 export default function HomePage() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("Search Now");
+  const [activeTab, setActiveTab] = useState("Daily Rental");
   const { resolvedTheme, setTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
 

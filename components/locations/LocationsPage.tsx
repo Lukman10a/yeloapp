@@ -17,6 +17,7 @@ import Link from "next/link";
 import HomeNavbar from "../home/HomeNavbar";
 import SafeImage from "../home/SafeImage";
 import { LOCATIONS, CITIES, FILTERS } from "./locationsData";
+import { useLanguage } from "@/app/providers";
 
 export default function LocationsPage() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,7 +27,33 @@ export default function LocationsPage() {
   const [activeType, setActiveType] = useState("All Types");
 
   const { resolvedTheme, setTheme } = useTheme();
+  const { language } = useLanguage();
   const isDark = resolvedTheme === "dark";
+  const isAr = language === "ar";
+
+  const cityLabel = (city: string) =>
+    isAr
+      ? {
+          "All Locations": "كل المواقع",
+          Riyadh: "الرياض",
+          Jeddah: "جدة",
+          Dammam: "الدمام",
+          Dubai: "دبي",
+          Cairo: "القاهرة",
+          Casablanca: "الدار البيضاء",
+        }[city] || city
+      : city;
+
+  const typeLabel = (type: string) =>
+    isAr
+      ? {
+          "All Types": "كل الأنواع",
+          Airports: "المطارات",
+          "City Branches": "فروع المدن",
+          Airport: "مطار",
+          City: "مدينة",
+        }[type] || type
+      : type;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -84,7 +111,7 @@ export default function LocationsPage() {
           <div className="absolute inset-0 bg-linear-to-t from-brand-offwhite dark:from-brand-charcoal via-transparent to-brand-charcoal/50 z-10"></div>
         </div>
 
-        <div className="max-w-screen-xl mx-auto px-4 z-20 w-full relative mt-12 md:mt-8">
+        <div className="max-w-7xl mx-auto px-4 z-20 w-full relative mt-12 md:mt-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -96,23 +123,24 @@ export default function LocationsPage() {
                 href="/"
                 className="hover:text-brand-yelo transition-colors text-white"
               >
-                Home
+                {isAr ? "الرئيسية" : "Home"}
               </Link>
               <ChevronRight size={16} className="mx-2 text-white" />
-              <span className="text-white">Locations</span>
+              <span className="text-white">{isAr ? "المواقع" : "Locations"}</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-6 tracking-tight text-white drop-shadow-xl">
-              Our <span className="text-brand-yelo">Branches</span>
+              {isAr ? "فروعنا" : "Our "} <span className="text-brand-yelo">{isAr ? "ومواقعنا" : "Branches"}</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-200 md:text-gray-300 max-w-2xl mx-auto font-medium mb-10">
-              Find a Yelo branch near you. Spread across major cities and
-              airports globally with 24/7 services.
+              {isAr
+                ? "اعثر على أقرب فرع يلو لك. نحن متواجدون في المدن الرئيسية والمطارات بخدمة مستمرة 24/7."
+                : "Find a Yelo branch near you. Spread across major cities and airports globally with 24/7 services."}
             </p>
 
             {/* Search Bar */}
             <div className="w-full max-w-2xl relative flex items-center bg-white dark:bg-gray-900 rounded-full p-1.5 shadow-[0_15px_40px_rgba(0,0,0,0.15)] dark:shadow-none border border-gray-100 dark:border-gray-800">
-              <div className="pl-5 text-gray-400">
+              <div className="ps-5 text-gray-400">
                 <Search
                   size={22}
                   className={searchQuery ? "text-brand-yelo" : ""}
@@ -120,13 +148,13 @@ export default function LocationsPage() {
               </div>
               <input
                 type="text"
-                placeholder="Search by city, airport, or branch name..."
+                placeholder={isAr ? "ابحث بالمدينة أو المطار أو اسم الفرع..." : "Search by city, airport, or branch name..."}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-transparent border-none focus:ring-0 py-3.5 px-4 text-gray-900 dark:text-white font-semibold outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500"
               />
               <button className="bg-brand-charcoal dark:bg-brand-yelo text-white dark:text-black px-6 py-3.5 rounded-full font-bold hover:bg-gray-900 dark:hover:bg-yellow-400 transition-colors active:scale-95">
-                Search
+                {isAr ? "بحث" : "Search"}
               </button>
             </div>
           </motion.div>
@@ -141,14 +169,14 @@ export default function LocationsPage() {
             {/* Filter by Type */}
             <div className="bg-white dark:bg-gray-900/50 rounded-3xl p-6 border border-gray-200 dark:border-gray-800 shadow-sm">
               <h3 className="text-sm font-black uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-4">
-                Branch Type
+                {isAr ? "نوع الفرع" : "Branch Type"}
               </h3>
               <div className="flex flex-col gap-2">
                 {FILTERS.map((filter) => (
                   <button
                     key={filter}
                     onClick={() => setActiveType(filter)}
-                    className={`flex items-center gap-3 text-left px-4 py-3 rounded-xl font-bold transition-all ${
+                    className={`flex items-center gap-3 text-start px-4 py-3 rounded-xl font-bold transition-all ${
                       activeType === filter
                         ? "bg-brand-yelo/10 text-brand-yelo dark:text-brand-yelo"
                         : "text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
@@ -165,7 +193,7 @@ export default function LocationsPage() {
                         <MapPin size={16} />
                       )}
                     </div>
-                    {filter}
+                    {typeLabel(filter)}
                   </button>
                 ))}
               </div>
@@ -174,20 +202,20 @@ export default function LocationsPage() {
             {/* Filter by City */}
             <div className="bg-white dark:bg-gray-900/50 rounded-3xl p-6 border border-gray-200 dark:border-gray-800 shadow-sm">
               <h3 className="text-sm font-black uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-4">
-                Select City
+                {isAr ? "اختر المدينة" : "Select City"}
               </h3>
-              <div className="flex flex-col gap-2 max-h-[400px] overflow-y-auto scrollbar-hide pr-2">
+              <div className="flex flex-col gap-2 max-h-100 overflow-y-auto scrollbar-hide pe-2">
                 {CITIES.map((city) => (
                   <button
                     key={city}
                     onClick={() => setActiveCity(city)}
-                    className={`text-left px-4 py-3 border-l-2 font-bold transition-all ${
+                    className={`text-start px-4 py-3 border-s-2 font-bold transition-all ${
                       activeCity === city
                         ? "border-brand-yelo text-brand-yelo"
                         : "border-transparent text-gray-600 dark:text-gray-400 hover:border-gray-300 dark:hover:border-gray-700 hover:text-gray-900 dark:hover:text-white"
                     }`}
                   >
-                    {city}
+                    {cityLabel(city)}
                   </button>
                 ))}
               </div>
@@ -199,11 +227,12 @@ export default function LocationsPage() {
             <div className="mb-6 flex justify-between items-end">
               <div>
                 <h2 className="text-2xl font-black tracking-tight text-gray-900 dark:text-white">
-                  {activeCity} Branches
+                  {cityLabel(activeCity)} {isAr ? "- الفروع" : "Branches"}
                 </h2>
                 <p className="text-gray-500 dark:text-gray-400 font-medium">
-                  Showing {filteredLocations.length} results{" "}
-                  {activeType !== "All Types" && `for ${activeType}`}
+                  {isAr
+                    ? `عرض ${filteredLocations.length} نتيجة ${activeType !== "All Types" ? `لـ ${typeLabel(activeType)}` : ""}`
+                    : `Showing ${filteredLocations.length} results ${activeType !== "All Types" ? `for ${activeType}` : ""}`}
                 </p>
               </div>
             </div>
@@ -228,14 +257,14 @@ export default function LocationsPage() {
                         quality={75}
                         className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
                       />
-                      <div className="absolute top-4 left-4 flex gap-2">
+                      <div className="absolute top-4 inset-s-4 flex gap-2">
                         <div className="bg-white/90 dark:bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-black shadow-lg uppercase tracking-wide flex items-center gap-1.5">
                           {loc.type === "Airport" ? (
                             <Plane size={12} className="text-brand-yelo" />
                           ) : (
                             <Building2 size={12} className="text-brand-yelo" />
                           )}
-                          {loc.type}
+                          {typeLabel(loc.type)}
                         </div>
                       </div>
                     </div>
@@ -275,10 +304,10 @@ export default function LocationsPage() {
                       </div>
 
                       <button className="w-full bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white font-bold py-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-brand-charcoal hover:dark:bg-brand-yelo hover:text-white dark:hover:text-black hover:border-transparent transition-colors flex items-center justify-center gap-2 group/btn">
-                        Get Directions{" "}
+                        {isAr ? "الحصول على الاتجاهات" : "Get Directions"}{" "}
                         <Navigation
                           size={16}
-                          className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform"
+                          className="group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 group-hover/btn:-translate-y-1 transition-transform"
                         />
                       </button>
                     </div>
@@ -295,10 +324,12 @@ export default function LocationsPage() {
                       <MapPin size={32} className="text-gray-400" />
                     </div>
                     <h3 className="text-xl font-black text-gray-900 dark:text-white mb-2">
-                      No Branches Found
+                      {isAr ? "لم يتم العثور على فروع" : "No Branches Found"}
                     </h3>
                     <p className="text-gray-500 dark:text-gray-400">
-                      Try adjusting your filters or search query.
+                      {isAr
+                        ? "جرب تعديل الفلاتر أو عبارة البحث."
+                        : "Try adjusting your filters or search query."}
                     </p>
                     <button
                       onClick={() => {
@@ -308,7 +339,7 @@ export default function LocationsPage() {
                       }}
                       className="mt-6 text-brand-yelo font-bold hover:underline"
                     >
-                      Clear All Filters
+                      {isAr ? "مسح كل الفلاتر" : "Clear All Filters"}
                     </button>
                   </motion.div>
                 )}

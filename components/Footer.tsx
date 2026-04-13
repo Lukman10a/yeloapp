@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useLanguage } from "@/app/providers";
 
 const Facebook = ({ size = 18 }) => (
   <svg
@@ -63,9 +64,110 @@ const Youtube = ({ size = 18 }) => (
 );
 
 export default function Footer() {
+  const { language } = useLanguage();
+  const isAr = language === "ar";
+
+  const footerCols = isAr
+    ? [
+        {
+          title: "الشركة",
+          links: [
+            { name: "عن يلو", href: "#" },
+            { name: "الوظائف", href: "#" },
+            { name: "الامتياز", href: "#" },
+          ],
+        },
+        {
+          title: "التأجير",
+          links: [
+            { name: "الأسطول", href: "/fleet" },
+            { name: "فروعنا", href: "/locations" },
+            { name: "العروض", href: "/offers" },
+          ],
+        },
+        {
+          title: "روابط مفيدة",
+          links: [
+            { name: "تواصل معنا", href: "#" },
+            { name: "الخدمات", href: "#" },
+            { name: "العضوية", href: "#" },
+            { name: "مجلة يلو", href: "#" },
+            { name: "أخبارنا", href: "#" },
+          ],
+        },
+        {
+          title: "مدن رئيسية",
+          links: [
+            { name: "استئجار سيارة في الرياض", href: "#" },
+            { name: "استئجار سيارة في مكة", href: "#" },
+            { name: "استئجار سيارة في المدينة", href: "#" },
+            { name: "استئجار سيارة في أبها", href: "#" },
+            { name: "استئجار سيارة في العلا", href: "#" },
+          ],
+        },
+        {
+          title: "وجهات دولية",
+          links: [
+            { name: "استئجار سيارة في المغرب", href: "#" },
+            { name: "استئجار سيارة في الإمارات", href: "#" },
+            { name: "استئجار سيارة في عُمان", href: "#" },
+            { name: "استئجار سيارة في مصر", href: "#" },
+            { name: "استئجار سيارة في سويسرا", href: "#" },
+          ],
+        },
+      ]
+    : [
+        {
+          title: "Company",
+          links: [
+            { name: "About Yelo", href: "#" },
+            { name: "Careers", href: "#" },
+            { name: "Franchise", href: "#" },
+          ],
+        },
+        {
+          title: "Rent",
+          links: [
+            { name: "Fleet", href: "/fleet" },
+            { name: "Our Branches", href: "/locations" },
+            { name: "Deals", href: "/offers" },
+          ],
+        },
+        {
+          title: "Useful Links",
+          links: [
+            { name: "Contact Us", href: "#" },
+            { name: "Services", href: "#" },
+            { name: "Membership", href: "#" },
+            { name: "Yelo Magazine", href: "#" },
+            { name: "Our News", href: "#" },
+          ],
+        },
+        {
+          title: "Top Cities",
+          links: [
+            { name: "Rent a car in Riyadh", href: "#" },
+            { name: "Rent a car in Makkah", href: "#" },
+            { name: "Rent a car in Al Madinah", href: "#" },
+            { name: "Rent a car in Abha", href: "#" },
+            { name: "Rent a car in Al-'Ula", href: "#" },
+          ],
+        },
+        {
+          title: "Intl Destinations",
+          links: [
+            { name: "Rent a car in Morocco", href: "#" },
+            { name: "Rent a car in UAE", href: "#" },
+            { name: "Rent a car in Oman", href: "#" },
+            { name: "Rent a car in Egypt", href: "#" },
+            { name: "Rent a car in Switzerland", href: "#" },
+          ],
+        },
+      ];
+
   return (
     <footer className="bg-brand-charcoal pt-20 md:pt-28 pb-8 relative overflow-hidden transition-colors border-t border-white/10 dark:border-white/5">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-linear-to-bl from-brand-yelo/5 to-transparent pointer-events-none"></div>
+      <div className="absolute top-0 inset-e-0 w-1/3 h-full bg-linear-to-bl from-brand-yelo/5 to-transparent pointer-events-none"></div>
 
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-7 gap-x-6 sm:gap-10 gap-y-12 md:gap-y-16 mb-16 md:mb-20">
@@ -82,67 +184,21 @@ export default function Footer() {
               </Link>
             </div>
             <p className="text-gray-400 text-sm sm:text-base mb-10 leading-relaxed font-medium max-w-md">
-              Beyond your expectations. Premium car rental services setting the
-              standard across Saudi Arabia and the GCC.
+              {isAr
+                ? "أبعد من توقعاتك. خدمات تأجير سيارات مميزة تضع معيار الجودة في السعودية ودول الخليج."
+                : "Beyond your expectations. Premium car rental services setting the standard across Saudi Arabia and the GCC."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
               <button className="bg-white/10 border border-white/20 text-white px-6 py-3.5 rounded-2xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-white/20 hover:border-white/30 transition-all shadow-sm flex-1 sm:flex-none transform hover:-translate-y-1">
-                App Store
+                {isAr ? "متجر التطبيقات" : "App Store"}
               </button>
               <button className="bg-white/10 border border-white/20 text-white px-6 py-3.5 rounded-2xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-white/20 hover:border-white/30 transition-all shadow-sm flex-1 sm:flex-none transform hover:-translate-y-1">
-                Google Play
+                {isAr ? "جوجل بلاي" : "Google Play"}
               </button>
             </div>
           </div>
 
-          {[
-            {
-              title: "Company",
-              links: [
-                { name: "About Yelo", href: "#" },
-                { name: "Careers", href: "#" },
-                { name: "Franchise", href: "#" },
-              ],
-            },
-            {
-              title: "Rent",
-              links: [
-                { name: "Fleet", href: "/fleet" },
-                { name: "Our Branches", href: "#" },
-                { name: "Deals", href: "#" },
-              ],
-            },
-            {
-              title: "Useful Links",
-              links: [
-                { name: "Contact Us", href: "#" },
-                { name: "Services", href: "#" },
-                { name: "Membership", href: "#" },
-                { name: "Yelo Magazine", href: "#" },
-                { name: "Our News", href: "#" },
-              ],
-            },
-            {
-              title: "Top Cities",
-              links: [
-                { name: "Rent a car in Riyadh", href: "#" },
-                { name: "Rent a car in Makkah", href: "#" },
-                { name: "Rent a car in Al Madinah", href: "#" },
-                { name: "Rent a car in Abha", href: "#" },
-                { name: "Rent a car in Al-'Ula", href: "#" },
-              ],
-            },
-            {
-              title: "Intl Destinations",
-              links: [
-                { name: "Rent a car in Morocco", href: "#" },
-                { name: "Rent a car in UAE", href: "#" },
-                { name: "Rent a car in Oman", href: "#" },
-                { name: "Rent a car in Egypt", href: "#" },
-                { name: "Rent a car in Switzerland", href: "#" },
-              ],
-            },
-          ].map((col) => (
+          {footerCols.map((col) => (
             <div key={col.title} className="col-span-1">
               <h4 className="text-white font-black tracking-widest text-xs uppercase mb-6 md:mb-8 flex items-center">
                 {col.title}
@@ -155,7 +211,7 @@ export default function Footer() {
                       className="text-gray-400 text-sm font-semibold hover:text-brand-yelo transition-colors relative group inline-block py-1"
                     >
                       {link.name}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-yelo transition-all duration-300 group-hover:w-full"></span>
+                      <span className="absolute bottom-0 inset-s-0 w-0 h-0.5 bg-brand-yelo transition-all duration-300 group-hover:w-full"></span>
                     </Link>
                   </li>
                 ))}
@@ -165,9 +221,8 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-gray-500 font-semibold text-xs md:text-sm text-center md:text-left selection:bg-brand-yelo selection:text-black">
-            © {new Date().getFullYear()} Alwefaq Transportation Solutions. All
-            rights reserved.
+          <div className="text-gray-500 font-semibold text-xs md:text-sm text-center md:text-start selection:bg-brand-yelo selection:text-black">
+            © {new Date().getFullYear()} {isAr ? "حلول الوفاق للنقل. جميع الحقوق محفوظة." : "Alwefaq Transportation Solutions. All rights reserved."}
           </div>
           <div className="flex gap-4">
             {[Facebook, Twitter, Linkedin, Youtube].map((Icon, idx) => (

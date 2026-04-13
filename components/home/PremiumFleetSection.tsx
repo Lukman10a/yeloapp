@@ -5,11 +5,15 @@ import { ArrowUpRight, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import SafeImage from "./SafeImage";
 import { FEATURE_CARS } from "./homeData";
+import { useLanguage } from "@/app/providers";
 
 export default function PremiumFleetSection() {
+  const { language } = useLanguage();
+  const isAr = language === "ar";
+
   return (
     <section className="py-16 md:py-24 max-w-screen-2xl mx-auto px-4 md:px-8 border-b border-gray-100 dark:border-gray-800/60 transition-colors relative overflow-hidden">
-      <div className="absolute top-20 right-0 w-125 h-125 bg-linear-to-br from-brand-yelo/10 to-transparent dark:from-brand-yelo/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+      <div className="absolute top-20 inset-e-0 w-125 h-125 bg-linear-to-br from-brand-yelo/10 to-transparent dark:from-brand-yelo/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6">
         <div className="max-w-2xl">
@@ -20,21 +24,25 @@ export default function PremiumFleetSection() {
             className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-brand-yelo rounded-full text-xs font-bold uppercase tracking-wider mb-4"
           >
             <span className="w-2 h-2 rounded-full bg-brand-yelo z-10 animate-pulse"></span>
-            Exclusive Collection
+            {isAr ? "مجموعة حصرية" : "Exclusive Collection"}
           </motion.div>
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-4 tracking-tight text-gray-900 dark:text-white leading-tight">
-            A Class Apart.
+            {isAr ? "فئة مختلفة تماما." : "A Class Apart."}
           </h2>
           <p className="text-gray-500 dark:text-gray-400 text-base sm:text-lg md:text-xl font-medium">
-            Carefully curated high-performance vehicles for those who demand
-            excellence on their journey.
+            {isAr
+              ? "سيارات عالية الأداء مختارة بعناية لمن يبحثون عن التميز في كل رحلة."
+              : "Carefully curated high-performance vehicles for those who demand excellence on their journey."}
           </p>
         </div>
-        <Link href="/fleet" className="flex items-center gap-2 text-gray-900 dark:text-white font-bold text-base sm:text-lg hover:text-brand-yelo dark:hover:text-brand-yelo transition-colors group border-b-2 border-gray-900 dark:border-white pb-1 hover:border-brand-yelo dark:hover:border-brand-yelo whitespace-nowrap">
-          View All Vehicles
+        <Link
+          href="/fleet"
+          className="flex items-center gap-2 text-gray-900 dark:text-white font-bold text-base sm:text-lg hover:text-brand-yelo dark:hover:text-brand-yelo transition-colors group border-b-2 border-gray-900 dark:border-white pb-1 hover:border-brand-yelo dark:hover:border-brand-yelo whitespace-nowrap"
+        >
+          {isAr ? "عرض كل السيارات" : "View All Vehicles"}
           <ArrowUpRight
             size={20}
-            className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+            className="group-hover:translate-x-1 rtl:group-hover:-translate-x-1 group-hover:-translate-y-1 transition-transform"
           />
         </Link>
       </div>
@@ -71,7 +79,14 @@ export default function PremiumFleetSection() {
             <div className="relative z-20 p-6 md:p-8 w-full transform translate-y-0 md:translate-y-8 md:group-hover:translate-y-0 transition-transform duration-500">
               <div className="flex justify-between items-center mb-4">
                 <span className="backdrop-blur-md bg-white/20 border border-white/20 text-white text-[10px] md:text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider">
-                  {car.cat}
+                  {isAr
+                    ? {
+                        Luxury: "فاخر",
+                        SUV: "دفع رباعي",
+                        Sports: "رياضي",
+                        Electric: "كهربائي",
+                      }[car.cat] || car.cat
+                    : car.cat}
                 </span>
                 <span className="bg-brand-yelo text-black text-xs font-black uppercase px-3 py-1.5 rounded-lg shadow-[0_0_15px_rgba(255,208,0,0.5)]">
                   {car.discount}
@@ -90,9 +105,24 @@ export default function PremiumFleetSection() {
                   >
                     <CheckCircle
                       size={14}
-                      className="text-brand-yelo mr-2 shrink-0"
+                      className="text-brand-yelo me-2 shrink-0"
                     />
-                    {feat}
+                    {isAr
+                      ? {
+                          "V8 Engine": "محرك V8",
+                          "Leather Interior": "مقصورة جلدية",
+                          "Massage Seats": "مقاعد تدليك",
+                          "7 Seater": "7 مقاعد",
+                          "Panoramic Roof": "سقف بانورامي",
+                          "All-Wheel Drive": "دفع رباعي",
+                          "0-100 in 3.2s": "0-100 خلال 3.2 ثانية",
+                          "Sport Chrono": "سبورت كرونو",
+                          "Bucket Seats": "مقاعد رياضية",
+                          "Fully Electric": "كهربائية بالكامل",
+                          "Bang & Olufsen": "بانج آند أولفسن",
+                          "Air Suspension": "تعليق هوائي",
+                        }[feat] || feat
+                      : feat}
                   </div>
                 ))}
               </div>
@@ -103,10 +133,10 @@ export default function PremiumFleetSection() {
                     SAR {car.crossed}
                   </span>
                   <span className="text-3xl font-black text-white drop-shadow-lg">
-                    <span className="text-brand-yelo mr-1">SAR</span>
+                    <span className="text-brand-yelo me-1">SAR</span>
                     {car.price}
-                    <span className="text-sm font-medium text-gray-300 ml-1">
-                      /day
+                    <span className="text-sm font-medium text-gray-300 ms-1">
+                      {isAr ? "/يوم" : "/day"}
                     </span>
                   </span>
                 </div>
