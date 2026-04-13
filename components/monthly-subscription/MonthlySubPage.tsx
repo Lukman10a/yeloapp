@@ -69,7 +69,9 @@ export default function MonthlySubPage() {
             <div className="max-w-2xl">
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-tight mb-4 tracking-tight text-white drop-shadow-xl">
                 {isAr ? "اشتراك يلو" : "Yelo Monthly"}{" "}
-                <span className="text-brand-yelo">{isAr ? "الشهري" : "Subscription"}</span>
+                <span className="text-brand-yelo">
+                  {isAr ? "الشهري" : "Subscription"}
+                </span>
               </h1>
               <p className="text-lg sm:text-xl text-gray-200 md:text-gray-300 max-w-xl font-medium tracking-wide">
                 {isAr
@@ -119,14 +121,18 @@ export default function MonthlySubPage() {
                   <div className="col-span-1 md:col-span-2">
                     <div className="flex justify-between items-center mb-2">
                       <label className="text-sm font-bold text-gray-700 dark:text-gray-300">
-                        {isAr ? "موقع الاستلام والإرجاع" : "Pick up & Return location"}
+                        {isAr
+                          ? "موقع الاستلام والإرجاع"
+                          : "Pick up & Return location"}
                       </label>
                       <label className="flex items-center gap-2 text-xs font-semibold text-gray-500 cursor-pointer">
                         <input
                           type="checkbox"
                           className="rounded text-brand-yelo focus:ring-brand-yelo"
                         />
-                        {isAr ? "إرجاع إلى موقع مختلف" : "Return to a different location"}
+                        {isAr
+                          ? "إرجاع إلى موقع مختلف"
+                          : "Return to a different location"}
                       </label>
                     </div>
                     <div className="relative">
@@ -136,7 +142,9 @@ export default function MonthlySubPage() {
                       />
                       <input
                         type="text"
-                        placeholder={isAr ? "ابحث عن الموقع" : "Search Location"}
+                        placeholder={
+                          isAr ? "ابحث عن الموقع" : "Search Location"
+                        }
                         className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 rounded-xl py-3.5 ps-10 pe-4 focus:outline-none focus:ring-2 focus:ring-brand-yelo dark:focus:ring-brand-yelo transition-all font-semibold"
                       />
                     </div>
@@ -195,7 +203,9 @@ export default function MonthlySubPage() {
                   </Link>
                   <div className="flex items-center gap-4 w-full sm:w-auto">
                     <span className="text-brand-charcoal dark:text-brand-yelo font-bold text-sm hidden sm:block">
-                      {isAr ? "تحتاج أكثر من 12 شهرا؟" : "Need More than 12 month?"}
+                      {isAr
+                        ? "تحتاج أكثر من 12 شهرا؟"
+                        : "Need More than 12 month?"}
                     </span>
                     <button className="bg-brand-charcoal dark:bg-brand-yelo text-white dark:text-black py-4 px-8 rounded-xl font-bold flex-1 sm:flex-none flex justify-center items-center gap-2 hover:bg-gray-800 dark:hover:bg-yellow-400 transition-all shadow-lg shadow-gray-900/20 active:scale-95 group">
                       {isAr ? "بحث" : "Search"}{" "}
@@ -216,7 +226,9 @@ export default function MonthlySubPage() {
       <section className="relative z-10 -mt-8 py-20 bg-brand-offwhite dark:bg-brand-charcoal transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 md:px-8 text-center mb-16 md:mb-24">
           <h2 className="text-3xl md:text-5xl font-black text-brand-charcoal dark:text-brand-yelo mb-6 tracking-tight">
-            {isAr ? "لماذا الاشتراك الشهري من يلو؟" : "Why the Monthly Subscription from Yelo?"}
+            {isAr
+              ? "لماذا الاشتراك الشهري من يلو؟"
+              : "Why the Monthly Subscription from Yelo?"}
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed font-medium">
             {isAr
@@ -270,9 +282,12 @@ export default function MonthlySubPage() {
                   <p className="text-gray-600 dark:text-gray-300 font-medium leading-relaxed">
                     {isAr
                       ? {
-                          "Our fleet is ready for your pick up; Get to choose the car you wish for your journey.": "أسطولنا جاهز لاستلامك، واختر السيارة التي تناسب رحلتك.",
-                          "Cancel your subscription anytime you wish with no financial penalties applied": "ألغ اشتراكك في أي وقت دون أي غرامات مالية.",
-                          "We’re always near to help you on the go with the fully-equipped maintenance fleet": "نحن دائما بالقرب منك لمساعدتك بأسطول صيانة مجهز بالكامل.",
+                          "Our fleet is ready for your pick up; Get to choose the car you wish for your journey.":
+                            "أسطولنا جاهز لاستلامك، واختر السيارة التي تناسب رحلتك.",
+                          "Cancel your subscription anytime you wish with no financial penalties applied":
+                            "ألغ اشتراكك في أي وقت دون أي غرامات مالية.",
+                          "We’re always near to help you on the go with the fully-equipped maintenance fleet":
+                            "نحن دائما بالقرب منك لمساعدتك بأسطول صيانة مجهز بالكامل.",
                         }[feat.desc] || feat.desc
                       : feat.desc}
                   </p>
@@ -318,9 +333,12 @@ export default function MonthlySubPage() {
                   <p className="text-gray-600 dark:text-gray-400 font-medium max-w-xs mx-auto">
                     {isAr
                       ? {
-                          "Select the ideal car and customize your subscription terms.": "اختر السيارة المثالية وحدد شروط اشتراكك.",
-                          "Collect your newly subscribed car from your chosen branch.": "استلم سيارتك الجديدة من الفرع الذي اخترته.",
-                          "Control your entire journey right from your fingertips.": "أدر كامل رحلتك بسهولة من هاتفك.",
+                          "Select the ideal car and customize your subscription terms.":
+                            "اختر السيارة المثالية وحدد شروط اشتراكك.",
+                          "Collect your newly subscribed car from your chosen branch.":
+                            "استلم سيارتك الجديدة من الفرع الذي اخترته.",
+                          "Control your entire journey right from your fingertips.":
+                            "أدر كامل رحلتك بسهولة من هاتفك.",
                         }[step.desc] || step.desc
                       : step.desc}
                   </p>

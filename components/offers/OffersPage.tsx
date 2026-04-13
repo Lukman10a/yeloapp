@@ -111,7 +111,9 @@ export default function OffersPage() {
           <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-4">
             {copy.title}
           </h1>
-          <p className="text-gray-200 md:text-xl max-w-2xl font-medium">{copy.subtitle}</p>
+          <p className="text-gray-200 md:text-xl max-w-2xl font-medium">
+            {copy.subtitle}
+          </p>
         </div>
       </section>
 

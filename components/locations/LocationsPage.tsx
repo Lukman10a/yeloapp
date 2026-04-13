@@ -55,6 +55,57 @@ export default function LocationsPage() {
         }[type] || type
       : type;
 
+  const locationAr: Record<
+    string,
+    { name: string; address: string; country: string }
+  > = {
+    "ruh-1": {
+      name: "مطار الملك خالد الدولي",
+      address: "صالة الوصول 1 و2، طريق المطار، الرياض",
+      country: "السعودية",
+    },
+    "ruh-2": {
+      name: "فرع العليا الرئيسي",
+      address: "طريق الملك فهد، حي العليا، الرياض",
+      country: "السعودية",
+    },
+    "ruh-3": {
+      name: "الحي المالي",
+      address: "مركز الملك عبدالله المالي (كافد)، الرياض",
+      country: "السعودية",
+    },
+    "jed-1": {
+      name: "مطار الملك عبدالعزيز الدولي",
+      address: "مبنى صالة الوصول الشمالية، جدة",
+      country: "السعودية",
+    },
+    "jed-2": {
+      name: "حي الأندلس",
+      address: "شارع التحلية، الأندلس، جدة",
+      country: "السعودية",
+    },
+    "dmm-1": {
+      name: "مطار الملك فهد الدولي",
+      address: "منطقة الوصول الرئيسية، الدمام",
+      country: "السعودية",
+    },
+    "dxb-1": {
+      name: "مطار دبي الدولي (DXB)",
+      address: "صالة الوصول - مبنى 3، دبي",
+      country: "الإمارات",
+    },
+    "cai-1": {
+      name: "مطار القاهرة الدولي",
+      address: "الطابق الأرضي - مبنى 2، القاهرة",
+      country: "مصر",
+    },
+    "cas-1": {
+      name: "مطار محمد الخامس الدولي",
+      address: "منطقة الوصول - مبنى 1، الدار البيضاء",
+      country: "المغرب",
+    },
+  };
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -126,11 +177,16 @@ export default function LocationsPage() {
                 {isAr ? "الرئيسية" : "Home"}
               </Link>
               <ChevronRight size={16} className="mx-2 text-white" />
-              <span className="text-white">{isAr ? "المواقع" : "Locations"}</span>
+              <span className="text-white">
+                {isAr ? "المواقع" : "Locations"}
+              </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-6 tracking-tight text-white drop-shadow-xl">
-              {isAr ? "فروعنا" : "Our "} <span className="text-brand-yelo">{isAr ? "ومواقعنا" : "Branches"}</span>
+              {isAr ? "فروعنا" : "Our "}{" "}
+              <span className="text-brand-yelo">
+                {isAr ? "ومواقعنا" : "Branches"}
+              </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-200 md:text-gray-300 max-w-2xl mx-auto font-medium mb-10">
               {isAr
@@ -148,7 +204,11 @@ export default function LocationsPage() {
               </div>
               <input
                 type="text"
-                placeholder={isAr ? "ابحث بالمدينة أو المطار أو اسم الفرع..." : "Search by city, airport, or branch name..."}
+                placeholder={
+                  isAr
+                    ? "ابحث بالمدينة أو المطار أو اسم الفرع..."
+                    : "Search by city, airport, or branch name..."
+                }
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-transparent border-none focus:ring-0 py-3.5 px-4 text-gray-900 dark:text-white font-semibold outline-none placeholder:text-gray-400 dark:placeholder:text-gray-500"
@@ -272,10 +332,15 @@ export default function LocationsPage() {
                     <div className="p-6 flex flex-col flex-1">
                       <div className="mb-4">
                         <p className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">
-                          {loc.city}, {loc.country}
+                          {cityLabel(loc.city)},{" "}
+                          {isAr
+                            ? (locationAr[loc.id]?.country ?? loc.country)
+                            : loc.country}
                         </p>
                         <h3 className="text-xl font-black text-gray-900 dark:text-white leading-tight">
-                          {loc.name}
+                          {isAr
+                            ? (locationAr[loc.id]?.name ?? loc.name)
+                            : loc.name}
                         </h3>
                       </div>
 
@@ -285,7 +350,11 @@ export default function LocationsPage() {
                             size={18}
                             className="text-gray-400 dark:text-gray-500 flex-none mt-0.5"
                           />
-                          <span>{loc.address}</span>
+                          <span>
+                            {isAr
+                              ? (locationAr[loc.id]?.address ?? loc.address)
+                              : loc.address}
+                          </span>
                         </div>
                         <div className="flex items-center gap-3 text-gray-600 dark:text-gray-300">
                           <Clock

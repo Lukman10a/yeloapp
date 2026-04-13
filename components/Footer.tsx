@@ -222,7 +222,10 @@ export default function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-gray-500 font-semibold text-xs md:text-sm text-center md:text-start selection:bg-brand-yelo selection:text-black">
-            © {new Date().getFullYear()} {isAr ? "حلول الوفاق للنقل. جميع الحقوق محفوظة." : "Alwefaq Transportation Solutions. All rights reserved."}
+            © {new Date().getFullYear()}{" "}
+            {isAr
+              ? "حلول الوفاق للنقل. جميع الحقوق محفوظة."
+              : "Alwefaq Transportation Solutions. All rights reserved."}
           </div>
           <div className="flex gap-4">
             {[Facebook, Twitter, Linkedin, Youtube].map((Icon, idx) => (

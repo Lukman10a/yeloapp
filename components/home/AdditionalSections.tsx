@@ -25,7 +25,10 @@ export default function AdditionalSections() {
       desc: "مساحة كافية لكل أفراد العائلة.",
     },
     Sports: { title: "رياضية", desc: "متعة الطريق بكل تفاصيلها." },
-    "Sedan & Compact": { title: "سيدان ومدمجة", desc: "مثالية لقيادة المدينة اليومية." },
+    "Sedan & Compact": {
+      title: "سيدان ومدمجة",
+      desc: "مثالية لقيادة المدينة اليومية.",
+    },
   };
 
   return (
@@ -64,7 +67,9 @@ export default function AdditionalSections() {
 
                 <div className="absolute bottom-6 md:bottom-8 inset-s-6 md:inset-s-8 z-20 pe-6">
                   <h3 className="text-xl sm:text-2xl md:text-4xl font-black mb-2 tracking-tight text-white group-hover:text-brand-yelo transition-colors">
-                    {isAr ? (bentoMap[cat.title]?.title ?? cat.title) : cat.title}
+                    {isAr
+                      ? (bentoMap[cat.title]?.title ?? cat.title)
+                      : cat.title}
                   </h3>
                   <p className="text-gray-200 md:text-gray-300 font-medium md:text-lg line-clamp-1">
                     {isAr ? (bentoMap[cat.title]?.desc ?? cat.desc) : cat.desc}
@@ -122,7 +127,10 @@ export default function AdditionalSections() {
               </p>
 
               <div className="flex flex-wrap gap-3">
-                {(isAr ? ["استأجر", "اكسب", "استبدل"] : ["Rent", "Earn", "Redeem"]).map((pill) => (
+                {(isAr
+                  ? ["استأجر", "اكسب", "استبدل"]
+                  : ["Rent", "Earn", "Redeem"]
+                ).map((pill) => (
                   <span
                     key={pill}
                     className="px-6 md:px-8 py-3 rounded-full border border-gray-400/30 text-white font-bold text-sm md:text-base hover:bg-brand-yelo hover:border-brand-yelo hover:text-black transition-colors cursor-pointer backdrop-blur-md bg-white/5"
@@ -180,8 +188,14 @@ export default function AdditionalSections() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-16 md:mb-24 text-center">
             {[
               { num: "500K+", label: isAr ? "عميل سعيد" : "Happy Customers" },
-              { num: "50+", label: isAr ? "موقعا في المملكة" : "Locations In KSA" },
-              { num: "100+", label: isAr ? "موديل سيارة متاح" : "Car Models Available" },
+              {
+                num: "50+",
+                label: isAr ? "موقعا في المملكة" : "Locations In KSA",
+              },
+              {
+                num: "100+",
+                label: isAr ? "موديل سيارة متاح" : "Car Models Available",
+              },
               { num: "10+", label: isAr ? "سنوات من الثقة" : "Years of Trust" },
             ].map((stat, i) => (
               <motion.div
@@ -237,9 +251,12 @@ export default function AdditionalSections() {
                   <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base font-medium leading-relaxed">
                     {isAr
                       ? {
-                          "Comprehensive coverage options tailored for completely stress-free driving experiences.": "خيارات تغطية شاملة مصممة لتجربة قيادة بلا أي قلق.",
-                          "Our dedicated mobile response units and customer care team are always standing by.": "فرق الاستجابة المتنقلة وخدمة العملاء لدينا جاهزون دائما.",
-                          "Reserve your vehicle in seconds. Manage seamlessly through our iOS and Android app.": "احجز سيارتك خلال ثوان وادِر رحلتك بسهولة عبر تطبيق iOS وAndroid.",
+                          "Comprehensive coverage options tailored for completely stress-free driving experiences.":
+                            "خيارات تغطية شاملة مصممة لتجربة قيادة بلا أي قلق.",
+                          "Our dedicated mobile response units and customer care team are always standing by.":
+                            "فرق الاستجابة المتنقلة وخدمة العملاء لدينا جاهزون دائما.",
+                          "Reserve your vehicle in seconds. Manage seamlessly through our iOS and Android app.":
+                            "احجز سيارتك خلال ثوان وادِر رحلتك بسهولة عبر تطبيق iOS وAndroid.",
                         }[feature.desc] || feature.desc
                       : feature.desc}
                   </p>
@@ -261,7 +278,8 @@ export default function AdditionalSections() {
 
           <div className="p-8 md:p-16 lg:p-24 z-10 w-full md:w-1/2 md:pe-0">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">
-              {isAr ? "استأجر بذكاء." : "Rent Smarter."} <br /> {isAr ? "قد أفضل." : "Drive Better."}
+              {isAr ? "استأجر بذكاء." : "Rent Smarter."} <br />{" "}
+              {isAr ? "قد أفضل." : "Drive Better."}
             </h2>
             <p className="text-gray-300 md:text-gray-400 text-lg md:text-xl font-medium mb-10 max-w-md leading-relaxed">
               {isAr

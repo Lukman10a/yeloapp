@@ -255,8 +255,12 @@ export default function FleetPage() {
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
               >
-                <option value="price-asc">{isAr ? "السعر من الأقل للأعلى" : "Price Low to High"}</option>
-                <option value="price-desc">{isAr ? "السعر من الأعلى للأقل" : "Price High to Low"}</option>
+                <option value="price-asc">
+                  {isAr ? "السعر من الأقل للأعلى" : "Price Low to High"}
+                </option>
+                <option value="price-desc">
+                  {isAr ? "السعر من الأعلى للأقل" : "Price High to Low"}
+                </option>
               </select>
             </div>
           </div>
@@ -304,7 +308,13 @@ export default function FleetPage() {
         >
           <AnimatePresence>
             {filteredCars.map((car) => (
-              <CarCard key={car.id} car={car} viewMode={viewMode} isAr={isAr} categoryLabel={categoryLabel} />
+              <CarCard
+                key={car.id}
+                car={car}
+                viewMode={viewMode}
+                isAr={isAr}
+                categoryLabel={categoryLabel}
+              />
             ))}
           </AnimatePresence>
 
@@ -341,6 +351,8 @@ export default function FleetPage() {
 function CarCard({
   car,
   viewMode,
+  isAr,
+  categoryLabel,
 }: {
   car: FleetCar;
   viewMode: "grid" | "list";
@@ -408,7 +420,9 @@ function CarCard({
                 <span className="text-sm font-bold text-brand-yelo">SAR</span>
               </span>
               <span className="text-[10px] text-gray-500 mt-1 uppercase">
-                {isAr ? "السعر لا يشمل ضريبة القيمة المضافة" : "Price do not include VAT"}
+                {isAr
+                  ? "السعر لا يشمل ضريبة القيمة المضافة"
+                  : "Price do not include VAT"}
               </span>
             </div>
             <button className="bg-gray-900 dark:bg-brand-yelo text-white dark:text-black font-black text-sm px-5 py-3 rounded-xl hover:scale-105 active:scale-95 transition-all">
@@ -506,7 +520,9 @@ function CarCard({
             </button>
           </div>
           <span className="text-[10px] text-gray-400 uppercase mt-4 block text-center md:text-right w-full">
-            {isAr ? "السعر لا يشمل ضريبة القيمة المضافة" : "Price do not include VAT"}
+            {isAr
+              ? "السعر لا يشمل ضريبة القيمة المضافة"
+              : "Price do not include VAT"}
           </span>
         </div>
       </div>
