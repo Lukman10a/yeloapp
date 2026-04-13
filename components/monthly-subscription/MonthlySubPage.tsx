@@ -6,11 +6,8 @@ import { motion } from "framer-motion";
 import {
   CalendarDays,
   CarFront,
-  LocateIcon,
   MapPin,
   ArrowRight,
-  ChevronRight,
-  MoreHorizontal,
   ChevronDown,
 } from "lucide-react";
 import Link from "next/link";

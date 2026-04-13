@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import LocationsPage from "../components/locations/LocationsPage";
+import LocationsPage from "@/components/locations/LocationsPage";
 
 export const metadata: Metadata = {
   title: "Our Locations & Branches | Yelo.",

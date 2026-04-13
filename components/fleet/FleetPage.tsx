@@ -8,7 +8,6 @@ import {
   LayoutGrid,
   List,
   Info,
-  CalendarDays,
   User,
   Briefcase,
   Snowflake,

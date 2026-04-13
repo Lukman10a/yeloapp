@@ -37,8 +37,7 @@ export default function SafeImage({
         sizes={sizes}
         quality={quality}
         className={`${className ?? ""} transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
-        preload={preload || priority}
-        loading={preload || priority ? "eager" : "lazy"}
+        priority={preload || priority}
         onLoad={() => setLoaded(true)}
         onError={() => setFailed(true)}
       />

@@ -16,7 +16,7 @@ import {
 import Link from "next/link";
 import HomeNavbar from "../home/HomeNavbar";
 import SafeImage from "../home/SafeImage";
-import { LOCATIONS, CITIES, FILTERS, BranchType } from "./locationsData";
+import { LOCATIONS, CITIES, FILTERS } from "./locationsData";
 
 export default function LocationsPage() {
   const [scrolled, setScrolled] = useState(false);

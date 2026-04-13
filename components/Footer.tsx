@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Plane, ShieldCheck, Clock, Heart } from "lucide-react";
 
 const Facebook = ({ size = 18 }) => (
   <svg

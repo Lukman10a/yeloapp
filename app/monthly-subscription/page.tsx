@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import MonthlySubPage from "../components/monthly-subscription/MonthlySubPage";
+import MonthlySubPage from "@/components/monthly-subscription/MonthlySubPage";
 
 export const metadata: Metadata = {
   title: "Monthly Subscription | Yelo.",

@@ -11,7 +11,6 @@ const nextConfig: NextConfig = {
       },
     ],
     formats: ["image/webp"],
-    qualities: [50, 60, 75],
     minimumCacheTTL: 60 * 60 * 24 * 7,
   },
 };

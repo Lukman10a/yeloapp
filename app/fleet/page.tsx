@@ -1,4 +1,4 @@
-import FleetPage from "../components/fleet/FleetPage";
+import FleetPage from "@/components/fleet/FleetPage";
 
 export const metadata = {
   title: "Fleet | Yelo",
