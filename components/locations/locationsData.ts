@@ -36,7 +36,7 @@ export const LOCATIONS: Location[] = [
     address: "King Fahd Road, Olaya District, Riyadh",
     hours: "08:00 AM - 11:00 PM",
     phone: "+966 11 123 4567",
-    image: "https://images.unsplash.com/photo-1582650587217-48f5a5e396e9?q=80&w=800&auto=format&fit=crop", // Modern city street
+    image: "https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=800&auto=format&fit=crop", // Modern city street
   },
   {
     id: "ruh-3",
@@ -47,7 +47,7 @@ export const LOCATIONS: Location[] = [
     address: "King Abdullah Financial District (KAFD), Riyadh",
     hours: "09:00 AM - 10:00 PM",
     phone: "+966 11 987 6543",
-    image: "https://images.unsplash.com/photo-1627581515867-b52b2b1ff9ec?q=80&w=800&auto=format&fit=crop", // KAFD lookalike
+    image: "https://images.unsplash.com/photo-1502003148287-a82ef80a6abc?q=80&w=800&auto=format&fit=crop", // KAFD lookalike
   },
   {
     id: "jed-1",
