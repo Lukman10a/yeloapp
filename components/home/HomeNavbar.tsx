@@ -116,7 +116,7 @@ export default function HomeNavbar({
               className={`hidden md:grid grid-cols-2 items-center p-1 rounded-full border transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] backdrop-blur-md relative w-23 ${scrolled ? "bg-gray-100/70 dark:bg-gray-800/60 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300" : "bg-white/10 border-white/20 text-white"}`}
             >
               <span
-                className={`absolute top-1 bottom-1 inset-s-1 w-10.5 rounded-full bg-brand-yelo shadow-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${language === "ar" ? "translate-x-10.5" : "translate-x-0"}`}
+                className={`absolute top-1 bottom-1 inset-s-1 w-10.5 rounded-full bg-brand-yelo shadow-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${language === "ar" ? "ltr:translate-x-10.5 rtl:-translate-x-10.5" : "translate-x-0"}`}
               />
               <button
                 onClick={toEnglish}
@@ -170,7 +170,7 @@ export default function HomeNavbar({
           <div className="mb-6 flex items-center justify-between gap-3 rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-2">
             <div className="grid grid-cols-2 items-center rounded-xl bg-gray-100 dark:bg-gray-800 p-1 relative w-24">
               <span
-                className={`absolute top-1 bottom-1 inset-s-1 w-11 rounded-lg bg-brand-yelo shadow-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${language === "ar" ? "translate-x-11" : "translate-x-0"}`}
+                className={`absolute top-1 bottom-1 inset-s-1 w-11 rounded-lg bg-brand-yelo shadow-sm transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${language === "ar" ? "ltr:translate-x-11 rtl:-translate-x-11" : "translate-x-0"}`}
               />
               <button
                 onClick={toEnglish}
