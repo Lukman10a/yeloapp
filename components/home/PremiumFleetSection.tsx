@@ -47,7 +47,7 @@ export default function PremiumFleetSection() {
         </Link>
       </div>
 
-      <div className="flex justify-center md:justify-start overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 pb-8 -mx-4 px-4 md:-mx-8 md:px-8 scrollbar-hide">
+      <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-6 lg:gap-8 pb-8 px-4 md:px-8 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {FEATURE_CARS.map((car, i) => (
           <motion.div
             key={car.name}
@@ -59,7 +59,7 @@ export default function PremiumFleetSection() {
               duration: 0.7,
               ease: [0.21, 1.02, 0.73, 1],
             }}
-            className="group relative h-112 sm:h-120 md:h-137.5 rounded-4xl overflow-hidden cursor-pointer flex flex-col justify-end flex-none w-[85vw] sm:w-[calc(50%-0.75rem)] md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.333rem)] xl:w-[calc(25%-1.5rem)] snap-start mx-auto md:mx-0"
+            className="group relative h-112 sm:h-120 md:h-137.5 rounded-4xl overflow-hidden cursor-pointer flex flex-col justify-end flex-none w-[85vw] sm:w-[calc(50%-0.5rem)] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.25rem)] snap-start"
           >
             <div className="absolute inset-0 bg-gray-100 dark:bg-gray-900 z-0">
               <SafeImage
