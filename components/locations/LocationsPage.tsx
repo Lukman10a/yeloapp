@@ -159,7 +159,7 @@ export default function LocationsPage() {
             quality={60}
           />
           <div className="absolute inset-0 bg-black/60 z-10 dark:bg-brand-charcoal/80 transition-colors duration-700"></div>
-          <div className="absolute inset-0 bg-linear-to-t from-brand-offwhite dark:from-brand-charcoal via-transparent to-brand-charcoal/50 z-10"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-brand-gray dark:from-brand-charcoal via-transparent to-brand-charcoal/50 z-10"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 z-20 w-full relative mt-12 md:mt-8">

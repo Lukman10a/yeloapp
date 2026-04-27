@@ -24,6 +24,9 @@ export default function SafeImage({
 }: SafeImageProps) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const isRemoteSrc = /^https?:\/\//.test(src);
+  const shouldBypassOptimizer =
+    isRemoteSrc && process.env.NODE_ENV !== "production";
 
   return (
     <>
@@ -36,6 +39,7 @@ export default function SafeImage({
         fill
         sizes={sizes}
         quality={quality}
+        unoptimized={shouldBypassOptimizer}
         className={`${className ?? ""} transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
         priority={preload || priority}
         onLoad={() => setLoaded(true)}

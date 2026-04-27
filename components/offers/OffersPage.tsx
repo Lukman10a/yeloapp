@@ -105,7 +105,7 @@ export default function OffersPage() {
             quality={60}
           />
           <div className="absolute inset-0 bg-black/55" />
-          <div className="absolute inset-0 bg-linear-to-t from-brand-offwhite dark:from-brand-charcoal via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-brand-gray dark:from-brand-charcoal via-transparent to-transparent" />
         </div>
         <div className="relative z-10 max-w-screen-2xl mx-auto w-full px-4 sm:px-6 md:px-8">
           <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight mb-4">
