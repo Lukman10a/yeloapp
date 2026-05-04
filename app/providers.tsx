@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import type { ThemeProviderProps } from "next-themes";
 import { createContext, useContext, useEffect, useState } from "react";
 
 type LanguageContextType = {
@@ -22,7 +21,7 @@ export function useLanguage() {
   return context;
 }
 
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<"en" | "ar">(() => {
     if (typeof window === "undefined") {
       return "en";
@@ -44,7 +43,36 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage }}>
-      <NextThemesProvider {...props}>{children}</NextThemesProvider>
+      {children}
     </LanguageContext.Provider>
+  );
+}
+
+export function ThemeProvider({
+  children,
+  attribute = "class",
+  defaultTheme = "system",
+  enableSystem = true,
+  disableTransitionOnChange = true,
+  ...props
+}: {
+  children: React.ReactNode;
+  attribute?: string;
+  defaultTheme?: string;
+  enableSystem?: boolean;
+  disableTransitionOnChange?: boolean;
+  [key: string]: unknown;
+}) {
+  return (
+    <NextThemesProvider
+      attribute={attribute}
+      defaultTheme={defaultTheme}
+      enableSystem={enableSystem}
+      disableTransitionOnChange={disableTransitionOnChange}
+      suppressHydrationWarning
+      {...props}
+    >
+      <LanguageProvider>{children}</LanguageProvider>
+    </NextThemesProvider>
   );
 }

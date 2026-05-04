@@ -28,6 +28,7 @@ export default function SafeImage({
   const [loaded, setLoaded] = useState(false);
   const isRemoteSrc = /^https?:\/\//.test(src);
   const shouldBypassOptimizer = isRemoteSrc;
+  const finalPriority = preload || priority;
 
   return (
     <>
@@ -40,10 +41,10 @@ export default function SafeImage({
         fill
         sizes={sizes}
         quality={quality}
-        {...(priority ? {} : { loading })}
+        {...(!finalPriority ? { loading } : {})}
         unoptimized={shouldBypassOptimizer}
         className={`${className ?? ""} transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
-        priority={preload || priority}
+        priority={finalPriority}
         onLoad={() => setLoaded(true)}
         onError={() => setFailed(true)}
       />

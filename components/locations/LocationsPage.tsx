@@ -375,13 +375,16 @@ export default function LocationsPage() {
                         </div>
                       </div>
 
-                      <button className="w-full bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white font-bold py-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-brand-charcoal hover:dark:bg-brand-yelo hover:text-white dark:hover:text-black hover:border-transparent transition-colors flex items-center justify-center gap-2 group/btn ui-motion ui-press ui-lift">
-                        {isAr ? "الحصول على الاتجاهات" : "Get Directions"}{" "}
+                      <Link
+                        href={`/locations/${loc.id}/directions`}
+                        className="w-full bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white font-bold py-3 rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-brand-charcoal hover:dark:bg-brand-yelo hover:text-white dark:hover:text-black hover:border-transparent transition-colors flex items-center justify-center gap-2 group/btn ui-motion ui-press ui-lift"
+                      >
+                        {isAr ? "الحصول على الاتجاهات" : "Get Directions"}
                         <Navigation
                           size={16}
                           className="group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 group-hover/btn:-translate-y-1 transition-transform"
                         />
-                      </button>
+                      </Link>
                     </div>
                   </motion.div>
                 ))}
