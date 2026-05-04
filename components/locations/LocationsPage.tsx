@@ -152,10 +152,12 @@ export default function LocationsPage() {
         <div className="absolute inset-0 z-0">
           <SafeImage
             src="https://images.unsplash.com/photo-1555529733-0e670560f7e1?q=80&w=2000&auto=format&fit=crop"
+            // src="https://images.unsplash.com/photo-1632653323756-a9b6966bc4d1?w=600&auto=format&fit=crop"
             alt="Yelo Branches GPS Map"
             sizes="100vw"
             className="object-cover object-center w-full h-full opacity-60"
             preload
+            loading="eager"
             quality={60}
           />
           <div className="absolute inset-0 bg-black/60 z-10 dark:bg-brand-charcoal/80 transition-colors duration-700"></div>
@@ -299,7 +301,7 @@ export default function LocationsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <AnimatePresence mode="popLayout">
-                {filteredLocations.map((loc) => (
+                {filteredLocations.map((loc, index) => (
                   <motion.div
                     key={loc.id}
                     layout
@@ -311,10 +313,11 @@ export default function LocationsPage() {
                   >
                     <div className="h-48 w-full relative overflow-hidden">
                       <SafeImage
-                        src={loc.image}
+                        src={loc.image || "/fallback-car.svg"}
                         alt={loc.name}
                         sizes="(max-width: 768px) 100vw, 50vw"
                         quality={75}
+                        loading={index === 0 ? "eager" : "lazy"}
                         className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute top-4 inset-s-4 flex gap-2">

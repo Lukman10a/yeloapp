@@ -12,7 +12,15 @@ export interface Location {
   image: string;
 }
 
-export const CITIES = ["All Locations", "Riyadh", "Jeddah", "Dammam", "Dubai", "Cairo", "Casablanca"];
+export const CITIES = [
+  "All Locations",
+  "Riyadh",
+  "Jeddah",
+  "Dammam",
+  "Dubai",
+  "Cairo",
+  "Casablanca",
+];
 export const FILTERS = ["All Types", "Airports", "City Branches"];
 
 export const LOCATIONS: Location[] = [
@@ -25,7 +33,9 @@ export const LOCATIONS: Location[] = [
     address: "Terminal 1 & 2 Arrivals, Airport Road, Riyadh",
     hours: "24 Hours / 7 Days",
     phone: "+966 9200 00000",
-    image: "https://images.unsplash.com/photo-1544626154-15e8c17b0780?q=80&w=800&auto=format&fit=crop", // Airport terminal inside
+    image:
+      "https://plus.unsplash.com/premium_photo-1733317275880-efc038690422?w=600&auto=format&fit=crop",
+    // "https://images.unsplash.com/photo-1526779259212-3e1a9a25e7c5?q=80&w=800&auto=format&fit=crop", // Riyadh airport interior
   },
   {
     id: "ruh-2",
@@ -36,7 +46,8 @@ export const LOCATIONS: Location[] = [
     address: "King Fahd Road, Olaya District, Riyadh",
     hours: "08:00 AM - 11:00 PM",
     phone: "+966 11 123 4567",
-    image: "https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=800&auto=format&fit=crop", // Modern city street
+    image:
+      "https://images.unsplash.com/photo-1486304873000-235643847519?q=80&w=800&auto=format&fit=crop", // Riyadh city street
   },
   {
     id: "ruh-3",
@@ -47,7 +58,8 @@ export const LOCATIONS: Location[] = [
     address: "King Abdullah Financial District (KAFD), Riyadh",
     hours: "09:00 AM - 10:00 PM",
     phone: "+966 11 987 6543",
-    image: "https://images.unsplash.com/photo-1502003148287-a82ef80a6abc?q=80&w=800&auto=format&fit=crop", // KAFD lookalike
+    image:
+      "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=800&auto=format&fit=crop", // Modern business district
   },
   {
     id: "jed-1",
@@ -58,7 +70,9 @@ export const LOCATIONS: Location[] = [
     address: "North Terminal Arrivals Building, Jeddah",
     hours: "24 Hours / 7 Days",
     phone: "+966 9200 00000",
-    image: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=800&auto=format&fit=crop", // Modern airport
+    image:
+      "https://images.unsplash.com/photo-1632653323756-a9b6966bc4d1?q=80&w=936&auto=format&fit=crop",
+    // "https://images.unsplash.com/photo-1549237513-97f4154f3de2?q=80&w=800&auto=format&fit=crop", // Jeddah airport arrival hall
   },
   {
     id: "jed-2",
@@ -69,7 +83,8 @@ export const LOCATIONS: Location[] = [
     address: "Tahlia Street, Al Andalus, Jeddah",
     hours: "08:00 AM - 11:00 PM",
     phone: "+966 12 345 6789",
-    image: "https://images.unsplash.com/photo-1616462725356-4226fabaebec?q=80&w=800&auto=format&fit=crop", // Palm trees city
+    image:
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=800&auto=format&fit=crop", // Stylish Arabian city street
   },
   {
     id: "dmm-1",
@@ -80,7 +95,8 @@ export const LOCATIONS: Location[] = [
     address: "Main Arrivals Concourse, Dammam",
     hours: "24 Hours / 7 Days",
     phone: "+966 9200 00000",
-    image: "https://images.unsplash.com/photo-1625406085542-f288bede8dc0?q=80&w=800&auto=format&fit=crop", // Airport setup
+    image:
+      "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=800&auto=format&fit=crop", // Airport gate with planes
   },
   {
     id: "dxb-1",
@@ -91,7 +107,9 @@ export const LOCATIONS: Location[] = [
     address: "Terminal 3 Arrivals, Dubai",
     hours: "24 Hours / 7 Days",
     phone: "+971 4 123 4567",
-    image: "https://images.unsplash.com/photo-1546415822-b5eab683abdb?q=80&w=800&auto=format&fit=crop", // Dubai skyline
+    image:
+      "https://plus.unsplash.com/premium_photo-1661963237186-6ad19c923d24?w=600&auto=format&fit=crop",
+    // "https://images.unsplash.com/photo-1546367564-0b716b28f5cf?q=80&w=800&auto=format&fit=crop", // Dubai skyline and airport vibes
   },
   {
     id: "cai-1",
@@ -102,7 +120,10 @@ export const LOCATIONS: Location[] = [
     address: "Terminal 2 Ground Floor, Cairo",
     hours: "24 Hours / 7 Days",
     phone: "+20 2 2265 5000",
-    image: "https://images.unsplash.com/photo-1574512402130-9b577ca226f9?q=80&w=800&auto=format&fit=crop", // Cairo look
+    image:
+      "https://images.unsplash.com/photo-1568600964990-6653286fa3f5?w=600&auto=format&fit=crop",
+
+    // "https://images.unsplash.com/photo-1581032281201-6421cc2154f0?q=80&w=800&auto=format&fit=crop", // Cairo airport interior
   },
   {
     id: "cas-1",
@@ -113,6 +134,7 @@ export const LOCATIONS: Location[] = [
     address: "Terminal 1 Arrivals Area, Casablanca",
     hours: "24 Hours / 7 Days",
     phone: "+212 522 000000",
-    image: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?q=80&w=800&auto=format&fit=crop", // Moroccan architecture
+    image:
+      "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?q=80&w=800&auto=format&fit=crop", // Moroccan city skyline
   },
 ];

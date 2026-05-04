@@ -92,6 +92,7 @@ export default function HomeNavbar({
 
           <div className="flex items-center gap-2 md:gap-4">
             <button
+              suppressHydrationWarning={true}
               onClick={onToggleTheme}
               className={`relative overflow-hidden h-11 w-11 rounded-2xl border transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] grid place-items-center ${
                 scrolled
@@ -187,6 +188,7 @@ export default function HomeNavbar({
             </div>
 
             <button
+              suppressHydrationWarning={true}
               onClick={onToggleTheme}
               className="relative overflow-hidden h-10 w-10 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 grid place-items-center text-gray-700 dark:text-gray-200 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
               aria-label="Toggle Theme"
